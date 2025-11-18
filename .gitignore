@@ -1,0 +1,29 @@
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.bcf
+*.blg
+*.bbl
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.lol
+*.nav
+*.snm
+*.synctex.gz
+*.run.xml
+*.fdb_latexmk
+*.fls
+
+# VSCode workspace settings
+.vscode/
+
+# MacOS metadata
+.DS_Store
+
+# Keep only PDF output
+!*.pdf
