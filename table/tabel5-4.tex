@@ -1,0 +1,62 @@
+\begin{table}[H]
+\centering
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{Kriteria Keberhasilan}
+\label{tbl:kriteria-keberhasilan}
+\begin{tabular}{|p{4.5cm}|p{10.2cm}|}
+\hline
+\textbf{Aspek yang Dievaluasi} & \textbf{Kriteria Keberhasilan} \\
+\hline
+
+Deteksi pada tingkat proses &
+\begin{itemize}[leftmargin=*]
+    \item Jumlah \textit{alert} proses $\leq 5$ 
+    \item Tidak ada \textit{block} total oleh \textit{anti-spyware}
+\end{itemize}
+\\
+\hline
+
+Deteksi aktivitas \textit{in-memory/fileless} &
+\begin{itemize}[leftmargin=*]
+    \item Tidak muncul \textit{alert} \textit{High Severity}
+    \item \textit{Alert} \textit{medium/low} $\leq 2$ kali
+\end{itemize}
+\\
+\hline
+
+Deteksi pada aktivitas \textit{crawling} &
+\begin{itemize}[leftmargin=*]
+    \item \textit{Alert crawling} $\leq 2$ kali
+    \item Tidak ada pemblokiran permanen pada akses direktori
+\end{itemize}
+\\
+\hline
+
+Deteksi trafik eksfiltrasi &
+\begin{itemize}[leftmargin=*]
+    \item \textit{Alert} jaringan $\leq 2$ kali
+    \item Tidak terjadi \textit{connection block}
+    \item Minimal 70\% \textit{request} HTTPS sukses
+\end{itemize}
+\\
+\hline
+
+Keberhasilan eksfiltrasi &
+\begin{itemize}[leftmargin=*]
+    \item \textit{Success rate} $\geq 80\%$
+    \item \textit{Batch} gagal $\leq 20\%$
+    \item Latensi per \textit{batch} masih dalam rentang wajar untuk jaringan lokal ($\leq 5$ detik)
+\end{itemize}
+\\
+\hline
+
+Stabilitas modul selama eksekusi &
+\begin{itemize}[leftmargin=*]
+    \item Tidak ada \textit{crash} fatal
+    \item Modul tetap berjalan sampai skenario uji selesai
+\end{itemize}
+\\
+\hline
+
+\end{tabular}
+\end{table}

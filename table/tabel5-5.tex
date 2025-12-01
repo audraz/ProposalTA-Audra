@@ -1,0 +1,52 @@
+\begin{table}[H]
+\centering
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{Analisis Risiko dan Mitigasi}
+\label{tbl:analisis-risiko-mitigasi}
+\begin{tabular}{|p{2.7cm}|p{3.8cm}|p{3.3cm}|p{4.2cm}|}
+\hline
+\textbf{Risiko} & \textbf{Penyebab} & \textbf{Dampak} & \textbf{Mitigasi} \\
+\hline
+
+Kegagalan eksfiltrasi
+&
+Server lokal lambat merespon, koneksi terhambat \textit{firewall}, atau interval pengiriman terlalu rapat
+&
+Data \textit{batch} hilang atau tidak tercatat
+&
+Menambah interval acak, memvalidasi \textit{endpoint} sebelum uji, dan menyesuaikan ukuran \textit{batch}
+\\
+\hline
+
+\textit{Crash} atau \textit{hang} pada modul
+&
+Modul \textit{mission} atau eksfiltrasi mengalami \textit{error runtime}
+&
+Skenario uji tidak dapat diselesaikan
+&
+Melakukan uji coba awal, \textit{logging} sederhana, dan pemantauan penggunaan memori selama eksekusi
+\\
+\hline
+
+Ketidaksesuaian data
+&
+Kesalahan saat \textit{formatting} JSON atau data \textit{buffer} tidak bersih
+&
+\textit{Batch} tidak diterima server atau \textit{parsing} gagal
+&
+Validasi JSON sebelum pengiriman, gunakan struktur \textit{payload} minimalis
+\\
+\hline
+
+Gangguan pada \textit{host} Windows selama pengujian
+&
+Beban \textit{crawling} atau proses eksfiltrasi memicu \textit{throttling} CPU/memori
+&
+Latensi meningkat dan hasil uji bias
+&
+Membatasi intensitas \textit{crawling}, memastikan \textit{host} dalam kondisi \textit{idle} saat uji
+\\
+\hline
+
+\end{tabular}
+\end{table}

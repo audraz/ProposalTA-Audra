@@ -1,0 +1,84 @@
+\begin{table}[H]
+\centering
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{Parameter dan Metrik Evaluasi}
+\label{tbl:param-metrik}
+\begin{tabular}{|p{3.2cm}|p{6cm}|p{5cm}|}
+\hline
+\textbf{Parameter Evaluasi} & \textbf{Penjelasan} & \textbf{Metrik yang Diukur} \\
+\hline
+
+Deteksi pada tingkat proses 
+& 
+Mengamati apakah aktivitas modul \textit{mission} terdeteksi oleh produk keamanan.
+&
+\begin{itemize}[leftmargin=*]
+  \item Jumlah \textit{alert}
+  \item Jenis \textit{alert} (\textit{warning}/\textit{block})
+  \item Kategori deteksi (\textit{behavioral}/\textit{signature based})
+\end{itemize}
+\\
+\hline
+
+Deteksi aktivitas \textit{in-memory}/\textit{fileless}
+&
+Mengevaluasi apakah eksekusi di memori (tanpa menulis \textit{file}) teridentifikasi oleh sistem.
+&
+\begin{itemize}[leftmargin=*]
+  \item \textit{Event log} ID yang muncul
+  \item \textit{Flag} atau indikator dari \textit{anti-spyware}
+  \item Anomali proses \textit{in-memory}
+\end{itemize}
+\\
+\hline
+
+Deteksi pada aktivitas \textit{crawling}
+&
+Melihat apakah enumerasi direktori, pembacaan metadata, atau akses \textit{cache} memicu deteksi.
+&
+\begin{itemize}[leftmargin=*]
+  \item \textit{Alert} atau \textit{warning} saat enumerasi \textit{folder}
+  \item Peringatan \textit{suspicious behavior}
+  \item Jumlah \textit{event} yang ditandai
+\end{itemize}
+\\
+\hline
+
+Deteksi trafik eksfiltrasi
+&
+Mengamati apakah \textit{batch} JSON yang dikirim melalui HTTPS dianggap anomali oleh \textit{anti-spyware}.
+&
+\begin{itemize}[leftmargin=*]
+  \item \textit{Alert} jaringan
+  \item \textit{Block}/allow status
+  \item Jumlah \textit{request} yang ditandai
+\end{itemize}
+\\
+\hline
+
+Keberhasilan eksfiltrasi
+&
+Mengukur seberapa banyak \textit{batch} yang berhasil dikirim dan diterima oleh server.
+&
+\begin{itemize}[leftmargin=*]
+  \item \textit{Success rate} (\%)
+  \item Jumlah \textit{batch} gagal
+  \item \textit{Latency} per \textit{batch}
+\end{itemize}
+\\
+\hline
+
+Stabilitas modul selama eksekusi
+&
+Menilai apakah modul berjalan stabil tanpa mengalami \textit{crash} atau \textit{error} selama skenario uji.
+&
+\begin{itemize}[leftmargin=*]
+  \item \textit{Crash count}
+  \item \textit{Error log}
+  \item Durasi eksekusi tanpa gangguan
+\end{itemize}
+\\
+\hline
+
+\end{tabular}
+\end{table}

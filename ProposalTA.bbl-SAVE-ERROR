@@ -1,0 +1,435 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{cms/global//global/global/global}
+    \entry{bypassav2023}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d7eafb66deb2d3e3688753848df2ef24}{%
+           family={Chatzoglou},
+           familyi={C\bibinitperiod},
+           given={Efstratios},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3de7aa7e992bb6cafda7bff2d7390c76}{%
+           family={Kambourakis},
+           familyi={K\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=67a1d0f2bb503d0135d5dbe16d6e8cda}{%
+           family={Karopoulos},
+           familyi={K\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dd99f2a1263623422c0c534badff7672}{%
+           family={Tsiatsikas},
+           familyi={T\bibinitperiod},
+           given={Zisis},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{fullhash}{4cfbfff509eabbab724fcc4f935f0897}
+      \strng{fullhashraw}{4cfbfff509eabbab724fcc4f935f0897}
+      \strng{bibnamehash}{4cfbfff509eabbab724fcc4f935f0897}
+      \strng{authorbibnamehash}{4cfbfff509eabbab724fcc4f935f0897}
+      \strng{authornamehash}{12a31593e8e070b61f1cc162e6633e55}
+      \strng{authorfullhash}{4cfbfff509eabbab724fcc4f935f0897}
+      \strng{authorfullhashraw}{4cfbfff509eabbab724fcc4f935f0897}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Bypassing Antivirus Detection: Old-School Malware, New Tricks}
+      \field{year}{2023}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{powershellfileless2024}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=372f0c88154dc5bab2c7fee2522189d3}{%
+           family={Elghaly},
+           familyi={E\bibinitperiod},
+           given={Yehia},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{fullhash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{fullhashraw}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{bibnamehash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{authorbibnamehash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{authornamehash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{authorfullhash}{372f0c88154dc5bab2c7fee2522189d3}
+      \strng{authorfullhashraw}{372f0c88154dc5bab2c7fee2522189d3}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Stealth in Plain Sight: The Hidden Threat of PowerShell Fileless Malware and Its Evasion of Modern EDRs \& AVs}
+      \field{year}{2024}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{pegasusanalysis}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2338ae3e79fca7aef9fd80f1e65917ce}{%
+           family={Kareem},
+           familyi={K\bibinitperiod},
+           given={Karwan},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{fullhash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{fullhashraw}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{bibnamehash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{authorbibnamehash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{authornamehash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{authorfullhash}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \strng{authorfullhashraw}{2338ae3e79fca7aef9fd80f1e65917ce}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{A Comprehensive Analysis of Pegasus Spyware and Its Implications for Digital Privacy and Security}
+      \field{year}{2024}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{pythonmalware2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8306afb82ad47e0b5cffd9b6f4185f52}{%
+           family={Koutsokostas},
+           familyi={K\bibinitperiod},
+           given={Vasilios},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb25a705ecb4db067d80a1f025858e97}{%
+           family={Patsakis},
+           familyi={P\bibinitperiod},
+           given={Constantinos},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{fullhash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{fullhashraw}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{bibnamehash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{authorbibnamehash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{authornamehash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{authorfullhash}{9410d254ca3e2705e27020c8e82bbb5b}
+      \strng{authorfullhashraw}{9410d254ca3e2705e27020c8e82bbb5b}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Python and Malware: Developing Stealth and Evasive Malware Without Obfuscation}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{noor2020cti}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=0bc31d41eed4ee33861c111e38be9e5e}{%
+           family={Noor},
+           familyi={N\bibinitperiod},
+           given={Umara},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=25351d51be381cfc1cdedd02866ea671}{%
+           family={Anwar},
+           familyi={A\bibinitperiod},
+           given={Zahid},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d24289f9b9ec54fc91e14e1ed92a843f}{%
+           family={Altmann},
+           familyi={A\bibinitperiod},
+           given={Jörn},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=195d3aad35f9f67835d59b4be9ff5c6f}{%
+           family={Rashid},
+           familyi={R\bibinitperiod},
+           given={Zahid},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9dee5906121788139946bd2d2bbe9c63}
+      \strng{fullhash}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \strng{fullhashraw}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \strng{bibnamehash}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \strng{authorbibnamehash}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \strng{authornamehash}{9dee5906121788139946bd2d2bbe9c63}
+      \strng{authorfullhash}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \strng{authorfullhashraw}{a26b01c41f34acf7ca8e9bf8188d4ae3}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Electronic Commerce Research and Applications}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Customer-Oriented Ranking of Cyber Threat Intelligence Service Providers}
+      \field{volume}{41}
+      \field{year}{2020}
+      \true{nocite}
+      \field{pages}{100976}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.elerap.2020.100976
+      \endverb
+    \endentry
+    \entry{spywareandroid2020}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=543dc87a7a92fd611ab1609bbc39d848}{%
+           family={Salih},
+           familyi={S\bibinitperiod},
+           given={Huda},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f272ebf32f2d99ac609e88313762b156}{%
+           family={Mohammed},
+           familyi={M\bibinitperiod},
+           given={Mustafa},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{fullhash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{fullhashraw}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{bibnamehash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{authorbibnamehash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{authornamehash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{authorfullhash}{d1f14343bf891292d2a0b351cb13ebb8}
+      \strng{authorfullhashraw}{d1f14343bf891292d2a0b351cb13ebb8}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Conference Paper}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Spyware Injection in Android Using Fake Application}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{sudhakar2020fileless}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e916e51b48846cca3f4b771a1b5e9197}{%
+           family={Sudhakar},
+           familyi={S\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=7e3576ffe8b83100181050ed0a37722e}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Sushil},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{fullhash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{fullhashraw}{e419b5aead07270e674f502cb78f4aea}
+      \strng{bibnamehash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{authorbibnamehash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{authornamehash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{authorfullhash}{e419b5aead07270e674f502cb78f4aea}
+      \strng{authorfullhashraw}{e419b5aead07270e674f502cb78f4aea}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{number}{1}
+      \field{title}{An Emerging Threat: Fileless Malware -- A Survey and Research Challenges}
+      \field{volume}{3}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1186/s42400-019-0043-x
+      \endverb
+    \endentry
+    \entry{studyinfo2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=8e5cced8b9e7af7c810ce1232975e356}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Varun},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=994af23318d6840f92bc00ce32d28234}{%
+           family={Dubey},
+           familyi={D\bibinitperiod},
+           given={Saurabh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ef64d3854fc52b519be4bca7cdb9b2f6}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={Tajwar},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fab7961d7d82dae35f0748f856149d67}{%
+           family={{Prem}},
+           familyi={P\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=563f766e67a165576886260d96201fdb}{%
+           family={Pandey},
+           familyi={P\bibinitperiod},
+           given={Himanshu},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8153172f7e77603e1ba1b50787d0794c}
+      \strng{fullhash}{0088b3f1502de32198379d9be39c14ea}
+      \strng{fullhashraw}{0088b3f1502de32198379d9be39c14ea}
+      \strng{bibnamehash}{0088b3f1502de32198379d9be39c14ea}
+      \strng{authorbibnamehash}{0088b3f1502de32198379d9be39c14ea}
+      \strng{authornamehash}{8153172f7e77603e1ba1b50787d0794c}
+      \strng{authorfullhash}{0088b3f1502de32198379d9be39c14ea}
+      \strng{authorfullhashraw}{0088b3f1502de32198379d9be39c14ea}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Cyber Security}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{The Study on Information Gathering}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+    \entry{stealthyVA2019}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=d559e1ffd66882c8dda9092710943125}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Rongjunchen},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e7b7a2010a7d5e2313bee7c60145b7ec}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5bb3615c181515ce31285f07a652bbe6}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Sheng},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c6616083efa23f30934d0bd55fbff02e}{%
+           family={Zheng},
+           familyi={Z\bibinitperiod},
+           given={Xi},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f114c7c7a9bf00ca5b50dc4dc4e156e}{%
+           family={Ding},
+           familyi={D\bibinitperiod},
+           given={Yong},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a6d5b296cbb732d3d8fe8cc9feca5368}
+      \strng{fullhash}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \strng{fullhashraw}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \strng{bibnamehash}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \strng{authorbibnamehash}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \strng{authornamehash}{a6d5b296cbb732d3d8fe8cc9feca5368}
+      \strng{authorfullhash}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \strng{authorfullhashraw}{3f1c57a1ddaa8ff41f6227189a18d8d8}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{IEEE}
+      \field{note}{Accessed November 20, 2025}
+      \field{title}{Using AI to Attack VA: A Stealthy Spyware Against Voice Assistants in Smart Phones}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{urlraw}
+      \verb N/A
+      \endverb
+      \verb{url}
+      \verb N/A
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

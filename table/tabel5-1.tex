@@ -1,0 +1,47 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3.5cm}|p{8cm}|p{3cm}|}
+\hline
+\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\ 
+\hline
+
+Penentuan target data \textit{crawling} &
+Mengidentifikasi jenis data yang akan diambil, yaitu hasil \textit{keylogging}, metadata proses sistem, artefak sistem tambahan, dan aktivitas \textit{cache} internet \textit{browser}. &
+Data \textit{dummy} \\
+\hline
+
+Implementasi \textit{fileless execution} &
+Menjalankan modul \textit{mission} sepenuhnya di memori dengan \textit{PowerShell}/\textit{WMI} agar tidak meninggalkan artefak \textit{disk}. &
+\textit{PowerShell}, \textit{WMI} \\
+\hline
+
+Pemanfaatan \textit{LOLBins} untuk proses \textit{crawling} &
+Memanfaatkan perintah bawaan Windows dan query \textit{WMI} untuk membaca direktori, \textit{registry} ringan, serta metadata sistem. Pendekatan ini menyamarkan \textit{crawling} sebagai aktivitas legal. &
+Windows native tools \\
+\hline
+
+Pengaturan pola \textit{crawling low and slow} &
+Mengatur intensitas \textit{crawling} agar berjalan perlahan dan acak, dengan interval yang tidak konstan serta pembacaan \textit{directory} per-\textit{batch} kecil. Tujuannya meniru pola pengguna normal dan memperkecil risiko \textit{alert} dari sistem keamanan. &
+Scheduler \\
+\hline
+
+Pembentukan \textit{buffer} data in memory &
+Data hasil \textit{crawling} disimpan sementara ke dalam \textit{buffer} di memori sebelum dikirimkan ke modul eksfiltrasi. \textit{Buffer} dibersihkan secara berkala untuk menghindari jejak forensik. &
+Memory buffer module \\
+\hline
+
+\textit{Obfuscation} ringan pada instruksi \textit{crawling} &
+\textit{Payload} dan instruksi \textit{crawling} diberi \textit{encoding} atau variasi nama parameter untuk mengurangi deteksi \textit{signature}, tanpa menimbulkan pola anomali baru. &
+\textit{Encoder} \\
+\hline
+
+Verifikasi fungsi modul \textit{mission} &
+Menguji apakah \textit{crawling} berjalan stabil, tidak memicu \textit{alert} awal, dan \textit{buffer} terbentuk dengan benar dalam lingkungan terisolasi. Dilakukan sebelum integrasi dengan modul eksfiltrasi. &
+Host Windows 10/11 \\
+\hline
+
+\end{tabular}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\caption{Rencana Implementasi Modul \textit{Mission}}
+\label{tbl:rencana-mission}
+\end{table}

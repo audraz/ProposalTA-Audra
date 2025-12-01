@@ -1,11 +1,59 @@
 % ==========================================
 % BAB V RENCANA SELANJUTNYA
 % ==========================================
+\setcounter{chapter}{4}
 \chapter{RENCANA SELANJUTNYA}
 \label{chap:rencana-selanjutnya}
-Jelaskan secara detail langkah-langkah rencana selanjutnya, hal-hal yang diperlukan atau akan disiapkan, dan risiko dan mitigasinya, yang meliputi:
-\begin{enumerate}
-\item	Rencana implementasi, termasuk alat dan bahan yang diperlukan, lingkungan, konfigurasi, biaya, dan sebagainya.
-\item	Desain pengujian dan evaluasi, misalnya metode verifikasi dan validasi.
-\item	Analisis risiko dan mitigasi, misalnya tindakan selanjutnya jika ada yang tidak berjalan sesuai rencana.
-\end{enumerate}
+Bab ini berisi rencana implementasi yang akan dilakukan untuk merealisasikan desain yang telah 
+dirumuskan pada Desain Solusi. Bab ini menyajikan rencana selanjutnya yang mencakup tiga bagian 
+utama, yaitu rencana implementasi prototipe, rencana evaluasi terhadap hasil pengujian, serta 
+analisis risiko yang mungkin muncul selama proses tersebut.
+
+\section{Rencana Implementasi}
+
+\subsection{Rencana Implementasi Modul \textit{Mission}}
+
+Implementasi modul \textit{mission} dilakukan dalam lingkungan uji terisolasi untuk memastikan 
+seluruh aktivitas data \textit{crawling} dapat diamati tanpa risiko menyebarnya malware uji ke 
+lingkungan luar. Lingkungan terisolasi ini memungkinkan proses pengamatan berjalan aman tanpa 
+mengganggu sistem utama, serta memberikan ruang untuk melakukan \textit{rollback} apabila terjadi 
+gangguan selama pengujian. Rencana implementasi modul \textit{mission} disajikan pada 
+Tabel~\ref{tbl:rencana-mission}.
+
+\input{table/tabel5-1}
+
+\subsection{Rencana Implementasi Modul \textit{Exfiltration}}
+
+Modul \textit{exfiltration} bertugas mengirimkan data hasil proses mission ke server penerima. 
+Rencana implementasi disusun untuk memastikan proses pengiriman data berjalan terstruktur, aman, dan 
+konsisten. Rencana implementasi modul \textit{exfiltration} disajikan pada Tabel~\ref{tbl:rencana-exfiltration}.
+
+\input{table/tabel5-2}
+
+\section{Rencana Evaluasi}
+
+\subsection{Parameter dan Metrik Evaluasi}
+
+Parameter dan metrik evaluasi digunakan untuk menentukan aspek apa saja yang perlu diamati selama 
+pengujian serta bagaimana kualitas perilaku modul diukur. Penetapan parameter membantu memastikan 
+setiap aktivitas \textit{mission} dan \textit{exfiltration} dapat dievaluasi secara objektif, 
+sementara metrik yang ditentukan berfungsi sebagai indikator keberhasilan atau kegagalan pada setiap 
+skenario uji. 
+
+\input{table/tabel5-3}
+
+\subsection{Kriteria Keberhasilan}
+
+Kriteria keberhasilan ditetapkan untuk menentukan apakah modul \textit{mission} dan modul \textit{exfiltration} 
+dapat beroperasi sesuai tujuan penelitian serta mengevaluasi respon produk keamanan terhadap aktivitas 
+tersebut. Pengujian dinyatakan berhasil apabila memenuhi kriteria keberhasilan pada Tabel \ref{tbl:kriteria-keberhasilan}.
+
+\input{table/tabel5-4}
+
+\section{Analisis Risiko}
+
+Analisis risiko diperlukan untuk mengidentifikasi potensi masalah yang dapat muncul selama implementasi 
+dan pengujian modul \textit{mission} serta modul \textit{exfiltration}. Langkah mitigasi disusun agar 
+setiap risiko dapat diminimalkan.
+
+\input{table/tabel5-5}
