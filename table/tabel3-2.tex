@@ -1,0 +1,44 @@
+\begin{table}[H]
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\centering
+\caption{Kebutuhan Fungsional}
+\label{tbl:kebutuhan-fungsional}
+
+\begin{tabular}{|p{1.5cm}|p{5cm}|p{7cm}|}
+\hline
+\textbf{ID} & \textbf{Kebutuhan} & \textbf{Penjelasan} \\
+\hline
+
+FR-01 &
+Sistem dapat melakukan proses \textit{crawling} data secara \textit{stealth} &
+Sistem harus memfasilitasi metode \textit{crawling} bertahap (\textit{low and slow}), 
+memanfaatkan proses atau API sah (\textit{living off the land}) agar pola akses menyerupai aktivitas normal 
+sehingga sulit terdeteksi \textit{anti-malware}. \\
+\hline
+
+FR-02 &
+Sistem mendukung eksfiltrasi data menggunakan metode yang sulit dianalisis &
+Eksfiltrasi dilakukan melalui kanal terenkripsi (misal HTTPS, DNS \textit{tunneling}), 
+data dicicil secara acak, serta menyamarkan trafik sehingga tidak mudah dibedakan dari aktivitas jaringan normal oleh deteksi keamanan. \\
+\hline
+
+FR-03 &
+Sistem tidak menyimpan artefak proses \textit{crawling} atau eksfiltrasi di disk &
+Semua proses berjalan \textit{in-memory}, tanpa membuat file \textit{temporary} yang dapat dianalisis secara forensik, 
+serta mendukung \textit{memory wiping} setelah selesai eksekusi. \\
+\hline
+
+FR-04 &
+Sistem memungkinkan penyembunyian aktivitas \textit{crawling} dan eksfiltrasi dalam proses aplikasi sah &
+Aktivitas bisa disisipkan melalui teknik \textit{injection/hollowing} ke aplikasi yang dipercaya, 
+agar \textit{event crawling} dan eksfiltrasi tersamarkan sebagai aktivitas aplikasi legal. \\
+\hline
+
+FR-05 &
+Sistem dapat melakukan \textit{clean up} otomatis untuk menghilangkan jejak digital &
+Setelah aktivitas \textit{crawling} dan eksfiltrasi selesai, sistem menghapus artefak, jejak \textit{log}, atau \textit{payload} sementara 
+sehingga \textit{anti-malware} maupun forensik tidak menemukan indikasi aktivitas berbahaya. \\
+\hline
+
+\end{tabular}
+\end{table}

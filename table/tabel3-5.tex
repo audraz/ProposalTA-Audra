@@ -1,0 +1,31 @@
+\begin{table}[H]
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\centering
+\caption{Analisis Alternatif Solusi}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{1.5cm}|p{3.3cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Solusi} & \textbf{Kelebihan} & \textbf{Kekurangan} \\ \hline
+
+AS-01 & \textit{Living off the land} &
+Menggunakan \textit{tools} OS yang trusted sehingga mirip aktivitas normal, mengurangi deteksi \textit{signature} dan \textit{behavior}. &
+Kegiatan yang terlalu mencurigakan masih bisa memicu alarm meskipun menggunakan \textit{LOLBins}. \\ \hline
+
+AS-02 & Menyamarkan pola eksfiltrasi melalui pengiriman bertahap &
+Menghindari deteksi karena volume trafik terlihat seperti aktivitas normal. &
+Memperlambat proses eksfiltrasi sehingga total waktu pengiriman data menjadi jauh lebih lama. \\ \hline
+
+AS-03 & \textit{Obfuscation custom payload} dan \textit{command} &
+Mengubah \textit{signature} dan pola sehingga mampu menghindari deteksi \textit{signature-based} maupun \textit{ML-based detection}. &
+Berisiko menghasilkan trafik/anomali mencurigakan jika obfuscation terlalu berat. \\ \hline
+
+AS-04 & \textit{Anti-forensics}: hapus \textit{memory artifacts} secara berkala &
+Mempersempit jejak forensik dan investigasi keamanan. &
+Menambah \textit{overhead} dan berpotensi menghapus data yang masih diperlukan jika tidak diatur dengan tepat. \\ \hline
+
+AS-05 & \textit{Fileless execution} + LOTL, \textit{obfuscation}, dan eksfiltrasi \textit{low profile} &
+Menurunkan jejak forensik dan membuat aktivitas spyware menyerupai proses sistem normal sehingga sangat sulit dideteksi oleh anti-spyware. &
+Lebih kompleks untuk diimplementasikan. \\ \hline
+
+\end{tabular}
+\end{table}

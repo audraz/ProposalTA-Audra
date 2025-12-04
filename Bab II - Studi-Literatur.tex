@@ -3,287 +3,351 @@
 % ==========================================
 \chapter{STUDI LITERATUR}
 \label{chap:studi-literatur}
-\section{Penulisan Gambar, Tabel, Rumus, dan Kode}
-\lipsum[1]
 
-\subsection{Gambar}
-Contoh gambar dapat dilihat pada Gambar \ref{gambar:jaringan}. Gambar dan judulnya diposisikan di tengah. Nomor gambar tidak diakhiri tanda titik. Gambar tersebut dibuat menggunakan aplikasi draw.io dan disimpan ke format PNG setelah dengan zoom setting pada angka 300\%. Ukuran gambar yang ditampilkan dapat diatur dengan mengubah nilai \textit{width} dalam sintaks \textit{includegraphics}.
+\section{\textit{Spyware}}
+\subsection{Definisi dan Karakteristik \textit{Spyware}}
 
-\begin{figure}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-	\centering
-  \captionsetup{justification=centering}
-    	\includegraphics[width=0.7\textwidth]{image/gambar1.png}
-	\caption{Contoh gambar jaringan}
-	\label{gambar:jaringan}
+Menurut \textcite{reddy2024review}, \textit{spyware} secara umum 
+didefinisikan sebagai salah satu bentuk \textit{malicious software} 
+(\textit{malware}) yang dirancang untuk memantau, merekam, dan 
+mengirimkan informasi sensitif pengguna tanpa sepengetahuan maupun 
+persetujuan pemilik perangkat. Kondisi ini menimbulkan ancaman serius 
+terhadap kerahasiaan data dan privasi digital. Dalam ranah 
+\textit{cyber espionage}, \textit{spyware} modern telah berevolusi 
+menjadi alat intelijen siber berkapabilitas tinggi. Pegasus, 
+misalnya, merupakan \textit{advanced spyware} yang mampu menginfeksi 
+\textit{smartphone} melalui berbagai vektor serangan dan mengekstraksi 
+hampir seluruh jenis data, termasuk komunikasi terenkripsi, sehingga 
+ancamannya mencakup individu, organisasi, hingga level negara 
+\autocite{kareem2024pegasus}. Dengan kemampuan pengawasan jangka 
+panjang, pelacakan lokasi, serta pemantauan aktivitas secara 
+\textit{real time}, \textit{spyware} menempati posisi penting 
+dalam ekosistem ancaman keamanan modern.
+
+Secara karakteristik, \textit{spyware} biasanya memiliki kemampuan 
+untuk beroperasi secara tersembunyi (\textit{stealth}), bertahan 
+lama (\textit{persistence}), serta melakukan komunikasi jarak jauh 
+dengan server pengendali (\textit{command and control}) untuk mengirimkan 
+data yang berhasil dikumpulkan \autocite{salih2020spyware}. Pada platform 
+Android, \textit{spyware} kerap disisipkan ke dalam aplikasi palsu atau 
+aplikasi yang tampak fungsional, lalu meminta berbagai \textit{permission} 
+sensitif, seperti akses kontak, pesan, lokasi, kamera, dan mikrofon 
+sebagai bagian dari \textit{social engineering}.
+
+\textcite{kareem2024pegasus} menambahkan bahwa \textit{spyware} tingkat lanjut dapat 
+memanfaatkan kerentanan \textit{zero day} dan mekanisme serangan 
+\textit{zero click} sehingga mampu menginfeksi perangkat tanpa perlu 
+interaksi pengguna, sekaligus menghapus jejak untuk mengurangi kemungkinan 
+analisis forensik. Dari sisi perilaku, \textit{spyware} umumnya menargetkan 
+berbagai jenis data, mulai dari kredensial, pesan instan, email, daftar 
+kontak, log panggilan, riwayat penelusuran, hingga data sensor seperti 
+lokasi GPS dan rekaman audio atau video. Beberapa implementasi juga 
+menyertakan fungsi \textit{keylogging}, pengambilan \textit{screenshot}, 
+dan pengumpulan informasi perangkat yang kemudian dimanfaatkan untuk 
+\textit{profiling} target serta perencanaan serangan lanjutan.
+
+\subsection{\textit{Spyware} Mode \textit{Stealth}}
+
+\textcite{elghaly2024fileless} menjelaskan bahwa \textit{spyware} mode 
+\textit{stealth} merujuk pada kelas \textit{spyware} yang dirancang untuk 
+beroperasi secara terselubung dengan meminimalkan jejak artefak forensik, sehingga 
+sulit terdeteksi oleh pengguna maupun solusi keamanan seperti antivirus 
+dan \textit{Endpoint Detection and Response} (EDR). Salah satu ciri 
+utama mode \textit{stealth} adalah pemanfaatan teknik \textit{fileless} 
+dan \textit{living off the land}, yaitu menjalankan \textit{payload} 
+langsung di memori serta menyalahgunakan komponen bawaan sistem seperti 
+PowerShell, WMI, dan \textit{task scheduler}, sehingga tidak meninggalkan 
+berkas \textit{executable} mencolok di disk. Dari sisi teknik, 
+\autocite{elghaly2024fileless} mendeskripsikan bahwa mode \textit{stealth} sering 
+bergantung pada beberapa mekanisme: eksekusi \textit{in memory}, 
+\textit{code obfuscation}, penggunaan komunikasi terenkripsi, serta 
+pemanfaatan \textit{persistence} yang terselubung melalui \textit{registry}, 
+\textit{scheduled task}, atau \textit{startup folder} yang tidak secara 
+eksplisit menunjukkan nama \textit{malware}.
+
+\textit{Spyware} canggih seperti Pegasus menggabungkan kemampuan penyamaran 
+proses, enkripsi komunikasi, dan mekanisme \textit{self-destruct} untuk 
+mempertahankan \textit{persistence} sekaligus menghapus bukti ketika 
+upaya analisis terdeteksi \autocite{kareem2024pegasus}. Pada kasus Pegasus, 
+aspek \textit{stealth} mencakup penggunaan \textit{exploit zero click}, 
+penyamaran sebagai proses sistem yang sah, komunikasi \textit{command and 
+control} (C2) terenkripsi, serta kemampuan untuk menyesuaikan diri dengan 
+lingkungan target dan menghilang ketika indikator analisis terdeteksi. 
+\textit{Spyware} ini juga memanfaatkan berbagai vektor infeksi seperti 
+\textit{phishing}, \textit{exploit chain}, \textit{watering hole attacks}, 
+dan \textit{network injection} sehingga proses infeksi dapat terjadi tanpa 
+interaksi pengguna, memperkuat karakteristik \textit{stealth} baik pada 
+fase infeksi maupun fase operasi pengumpulan data.
+
+\Textcite{sudhakar2020fileless} menjelaskan bahwa \textit{fileless malware} 
+dirancang untuk beroperasi langsung di memori dengan memanfaatkan komponen 
+bawaan sistem seperti PowerShell dan Windows Management Instrumentation 
+(WMI), sehingga hampir tidak meninggalkan berkas tradisional di disk. 
+Karakteristik ini menjadikan \textit{fileless malware} sulit dideteksi 
+oleh solusi keamanan berbasis \textit{signature} dan selaras dengan tujuan 
+operasi \textit{stealth} karena aktivitas berbahaya berbaur dengan aktivitas 
+administratif yang sah.
+
+\section{\textit{Data Crawling}}
+\subsection{Definisi \textit{Data Crawling}}
+
+Data \textit{crawling} adalah proses otomatis yang dilakukan untuk 
+mengumpulkan data dari berbagai sumber, terutama dari internet atau sistem 
+digital, dengan cara menjelajahi dan mengambil konten secara sistematis 
+menggunakan perangkat lunak khusus yang disebut \textit{crawler}. Proses 
+ini memungkinkan pengumpulan informasi yang kemudian dapat dianalisis lebih 
+lanjut untuk berbagai keperluan, termasuk dalam ranah keamanan siber dan 
+intelijen digital \autocite{salih2020spyware}. Dalam konteks siber, 
+\textit{crawling} digunakan \textit{spyware} sebagai metode pengumpulan 
+data korban secara tersembunyi dan berkelanjutan.
+
+\textcite{kareem2024pegasus} menambahkan bahwa teknik \textit{crawling} pada 
+\textit{spyware} modern seperti Pegasus diperluas dengan penggunaan metode 
+eksfiltrasi data untuk memperluas jangkauan pengumpulan informasi, baik 
+dari perangkat korban maupun sumber eksternal, sehingga efektivitas 
+pengintaian digital semakin meningkat.
+
+Menurut \textcite{jegan2024aicrawler}, \textit{crawling} dipahami sebagai proses 
+penelusuran data yang dilakukan secara otomatis, terstruktur, dan berulang 
+untuk menjangkau berbagai informasi digital. Sistem \textit{crawling} 
+dirancang untuk menavigasi dan menelusuri struktur data, baik dalam bentuk 
+jaringan, tautan, maupun elemen-elemen sistem lain, untuk mengekstraksi 
+konten serta mengidentifikasi pola atau informasi penting dari sumber data 
+yang kompleks. Konsep ini sejalan dengan pemanfaatan \textit{crawling} 
+dalam perangkat lunak berbahaya, di mana prinsip \textit{systematic 
+traversal} yang digunakan pada \textit{web crawling} juga diterapkan pada 
+lingkungan perangkat korban, misalnya dengan menelusuri direktori, memindai 
+berkas, membaca metadata, atau mengakses \textit{cache} aplikasi.
+
+\subsection{Jenis Data Target \textit{Crawling}}
+Menurut penelitian yang dilakukan \textcite{salih2020spyware}, 
+\textit{spyware} Android yang mereka kembangkan dan uji disembunyikan 
+di dalam aplikasi permainan palsu dengan tujuan memperoleh berbagai 
+informasi korban, seperti kontak, pesan, panggilan, akun, serta lokasi 
+geografis melalui Wi-Fi atau SIM, 3G, 4G, dan LTE, serta informasi pribadi 
+lain yang tersimpan di perangkat. Selain itu, \textit{spyware} tersebut 
+juga dapat menampilkan daftar korban, mengambil seluruh kontak, membaca 
+pesan masuk dan keluar, serta melihat \textit{call log}.
+
+\textcite{kareem2024pegasus} menjelaskan bahwa Pegasus, setelah berhasil menginfeksi 
+\textit{smartphone}, mampu mengakses berbagai jenis data sensitif dari 
+perangkat target, termasuk pesan, email, panggilan, riwayat penelusuran, 
+data dari aplikasi media sosial, serta data dari aplikasi pesan terenkripsi. 
+\textcite{kareem2024pegasus} juga menyebutkan bahwa Pegasus dapat mengaktifkan mikrofon 
+dan kamera untuk merekam audio dan video, melacak lokasi secara 
+\textit{real time}, menangkap penekanan tombol, serta mengumpulkan berkas 
+dan pengenal unik perangkat.
+
+\subsection{Teknik dan Mekanisme \textit{Data Crawling}}
+
+Teknik dan mekanisme \textit{data crawling} dalam konteks \textit{spyware} 
+dan keamanan siber menggambarkan bagaimana sistem berbahaya maupun 
+\textit{security monitoring tools} mengotomatisasi proses pengumpulan 
+informasi dari perangkat korban. Menurut \textcite{salih2020spyware}, teknik 
+\textit{crawling} pada \textit{spyware} Android diimplementasikan dengan 
+menyisipkan kode \textit{spyware} ke dalam aplikasi permainan palsu yang 
+berjalan seperti aplikasi biasa namun di latar belakang mengeksekusi fungsi 
+pengambilan data. Saat aplikasi dibuka, \textit{spyware} secara otomatis 
+mengumpulkan kontak, pesan, \textit{call log}, akun, dan lokasi, kemudian 
+mengirimkannya ke \textit{REST API} berbasis PHP yang menyimpan data 
+tersebut pada basis data MySQL sehingga operator dapat mengaksesnya melalui 
+\textit{control panel} tanpa memerlukan interaksi tambahan dengan korban.
+
+Pada \textit{spyware} Pegasus, setelah tahap infeksi, \textit{spyware} 
+menjalankan modul untuk mengekstraksi berbagai jenis data dari perangkat 
+target. Pada bagian \textit{data collection and exfiltration}, 
+\textcite{kareem2024pegasus} menjelaskan bahwa Pegasus mengakses pesan instan, media 
+sosial, riwayat penelusuran, sandi tersimpan, kalender, catatan, pengenal 
+perangkat, serta berkas lokal maupun \textit{cloud}. Data tersebut kemudian 
+dienkripsi dan dikirimkan ke server \textit{command and control} (C2) 
+sebagai mekanisme eksfiltrasi yang terotomatisasi dan berulang.
+
+Penelitian yang dilakukan \textcite{jegan2024aicrawler} secara spesifik membahas 
+mekanisme \textit{web crawling} pada lingkungan \textit{dark web}, yaitu 
+proses penelusuran otomatis terhadap halaman dan tautan untuk mengumpulkan 
+informasi seperti kredensial yang terekspos dan diskusi terkait serangan 
+siber. Mekanisme \textit{data crawling} dalam sistem mereka dimulai dari 
+pemberian kata kunci atau URL awal yang kemudian digunakan \textit{crawler} 
+untuk menelusuri \textit{dark web} dan mengekstraksi informasi penting 
+seperti \textit{compromised credentials}. \textit{Crawler} secara otomatis 
+mengirim \textit{HTTP request}, mengambil halaman, mengekstrak konten, 
+kemudian memanfaatkan \textit{natural language processing} (NLP) dan 
+\textit{machine learning} (ML) untuk menginterpretasi data tidak 
+terstruktur serta mendeteksi pola anomali yang mengindikasikan potensi 
+ancaman.
+
+\section{\textit{Exfiltration}}
+\subsection{Definisi dan Tujuan \textit{Exfiltration}}
+
+\begin{figure}[H]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.85\textwidth]{image/exfiltration.png}
+    \caption{Data \textit{Exfiltration}}
+    \label{fig:exfiltration}
 \end{figure}
 
-Gambar umumnya tidak jelas atau kabur jika gambar tersebut:
-\begin{enumerate}[a.]
-  \item diperoleh dari hasil cropping pada suatu halaman buku atau situs web;
-  \item hasil pembesaran gambar yang gambar aslinya sebenarnya berukuran kecil; atau
-  \item disimpan dalam resolusi kecil
-\end{enumerate}
-Ketidakjelasan gambar ini dapat dilihat pada garis-garis diagram yang tidak tegas dan tulisan-tulisan dalam gambar yang tampak kabur dan kurang jelas terbaca.
+Definisi dan tujuan eksfiltrasi dalam konteks \textit{spyware} dan 
+keamanan siber merujuk pada proses pengambilan dan pengiriman keluar 
+data dari sistem atau perangkat target secara tidak sah oleh pihak 
+penyerang. \textcite{reddy2024review} menjelaskan eksfiltrasi sebagai salah satu 
+aktivitas utama \textit{payload} \textit{spyware}, yaitu pengambilan dan 
+pengiriman keluar data sensitif secara tidak sah setelah \textit{spyware} 
+berhasil dijalankan di dalam sistem korban. \textit{Spyware} pada perangkat 
+yang telah terkompromi mengakses berbagai sumber daya internal, mengumpulkan 
+data sensitif, kemudian mengirimkannya keluar melewati batas jaringan 
+menuju infrastruktur penyerang. Data yang telah dieksfiltrasi tersebut 
+selanjutnya dapat dimanfaatkan sesuai tujuan penyerang.
 
-Untuk mendapatkan gambar yang tidak kabur (\textit{blur}), langkah-langkah berikut dapat digunakan:
-\begin{enumerate}[(a)]
-\item Gambar yang didapat di suatu pustaka atau referensi sebaiknya digambar ulang, misalnya menggunakan PowerPoint, Canva, Figma, draw.io, atau yang lainnya.
-\item Jika diagram atau ilustrasi digambar menggunakan draw.io, saat gambar disimpan ke format PNG atau JPG (\textit{export as}), lakukan \textit{zoom} ke minimal 300\% (\textit{the default value is} 100\%). 
-\item Jika diagram digambar dengan menggunakan PowerPoint, gambar dapat langsung di-\textit{copy-paste} ke Word.
-\end{enumerate}
+Menurut \textcite{king2021dataexfiltration}, \textit{data exfiltration} didefinisikan 
+sebagai proses pemindahan data secara tidak sah dari dalam jaringan atau 
+sistem organisasi ke pihak luar melalui berbagai media dan protokol 
+komunikasi. Eksfiltrasi merupakan tahap akhir dari banyak insiden keamanan, 
+ketika pelaku yang telah memperoleh akses berusaha mengeluarkan informasi 
+bernilai tinggi. Tujuan utama \textit{exfiltration} adalah mengumpulkan 
+dan mengirimkan data bernilai ke infrastruktur penyerang untuk kemudian 
+dimonetisasi, dimanfaatkan dalam spionase, atau digunakan sebagai 
+\textit{leverage} dalam pemerasan. Proses eksfiltrasi dijaga kerahasiaannya 
+dengan menyamarkan lalu lintas keluar agar terlihat seperti trafik normal, 
+misalnya dengan memanfaatkan protokol umum serta pola komunikasi yang 
+menyerupai aktivitas sah di jaringan.
 
-\subsection{Tabel}
-Tabel ada dua jenis, yaitu tabel yang bisa termuat dalam satu halaman dan tabel yang sangat panjang sehingga tidak muat dalam satu halaman.
-\subsubsection{Tabel yang Muat dalam Satu Halaman}
-Contoh tabel dapat dilihat pada Tabel \ref{tbl:harga1} dan \ref{tbl:harga2}. Tabel dan judulnya dibuat rata kiri dan judul tabel diletakkan di atas tabel. Usahakan tabel dapat ditulis dalam satu halaman, tidak terpotong ke halaman berikutnya.
+\subsection{Metode \textit{Exfiltration}}
 
-\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-  \begin{tabular}{ | p{2cm} | p{2cm} | p{3cm} |}
-	\hline
-	Nama 	& Satuan 		& Harga \\
-	\hline
-	Buku 	& Exemplar	& 25000 \\
-	Komputer	& Unit		& 2500000 \\
-	Pensil	& Buah		& 118900 \\
-	\hline
-	\end{tabular}
-\caption{Tabel harga bahan pokok}
-\label{tbl:harga1}
-\end{table}
+\textcite{king2021dataexfiltration} menjelaskan bahwa metode \textit{data exfiltration} 
+dapat dikategorikan menjadi tiga kelompok utama, yaitu 
+\textit{content-based}, \textit{header-based}, dan \textit{meta-based 
+methods}. Dalam studi tersebut, diimplementasikan beberapa teknik 
+eksfiltrasi, seperti penyisipan data pada citra digital (\textit{image 
+steganography}), pemanfaatan HTTP~404 untuk menyamarkan transfer data 
+pada \textit{web logs}, manipulasi nilai \textit{Time To Live} (TTL), 
+manipulasi \textit{IP options field}, serta pemanfaatan \textit{e-mail 
+header} untuk membawa \textit{payload} eksfiltrasi sebelum kemudian diuji 
+apakah serangan tersebut dapat dideteksi oleh IDS Snort.
 
+\textcite{ullah2018dataexfiltration} mengulas berbagai vektor serangan eksternal yang 
+digunakan untuk eksfiltrasi data, antara lain \textit{web-based 
+exfiltration} melalui HTTP/HTTPS, eksfiltrasi berbasis \textit{e-mail}, 
+\textit{DNS tunneling}, protokol \textit{file transfer}, layanan 
+\textit{cloud storage} dan \textit{file sharing}, serta berbagai 
+\textit{covert channels}. Penulis menekankan bahwa penggunaan protokol 
+dan layanan yang umum digunakan organisasi, seperti HTTP/HTTPS dan layanan 
+\textit{cloud}, membuat lalu lintas eksfiltrasi sulit dibedakan dari trafik 
+sah, sehingga setiap vektor dibahas bersamaan dengan ringkasan 
+\textit{countermeasures} yang dapat diterapkan.
 
+Penelitian oleh \textcite{zhan2022doh} menunjukkan bahwa penyerang dapat 
+memanfaatkan \textit{DNS over HTTPS} (DoH) sebagai kanal eksfiltrasi 
+dengan menyembunyikan permintaan DNS di dalam trafik HTTPS terenkripsi. 
+Studi ini menganalisis karakteristik trafik DoH, meliputi \textit{TLS 
+fingerprint} dan fitur-fitur aliran (\textit{flow-based features}) yang 
+berbeda dari pola penggunaan normal, serta mengusulkan metode deteksi 
+berbasis \textit{machine learning} untuk mengidentifikasi \textit{DoH 
+tunneling}.
 
-\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-	\begin{tabular}{ | l | c | r | }
-	\hline
-	Nama 	& Satuan 		& Harga \\
-	\hline
-	Buku 	& Exemplar	& 25000 \\
-	Komputer	& Unit		& 2500000 \\
-	Pensil	& Buah		& 118900 \\
-	\hline
-	\end{tabular}
-\caption{Tabel harga bahan sekunder}
-\label{tbl:harga2}
-\end{table}
+\section{\textit{Anti-Spyware}}
+\subsection{Definisi \textit{Anti-Spyware}}
 
-% -- Example of importing table from external file --
-\subsubsection{Mengimpor Tabel dari Berkas Eksternal}
+\textcite{baldota2025review} menyatakan bahwa \textit{anti-spyware} merupakan 
+perangkat lunak atau mekanisme keamanan yang dirancang khusus untuk 
+mengidentifikasi, menghapus, dan mencegah aktivitas \textit{spyware} 
+dalam sistem komputer maupun perangkat bergerak. Fungsi utama 
+\textit{anti-spyware} tidak hanya mendeteksi dan menghapus program 
+\textit{spyware} yang berbahaya, tetapi juga melindungi privasi pengguna 
+serta mencegah pencurian data secara diam-diam oleh aplikasi tidak sah. 
+Perangkat \textit{anti-spyware} dilengkapi dengan berbagai teknik, mulai 
+dari \textit{signature-based detection}, \textit{behavior-based detection}, 
+\textit{heuristics}, hingga metode berbasis \textit{machine learning} 
+untuk memperluas jangkauan dan efektivitas deteksi terhadap beragam varian 
+\textit{spyware} yang terus berkembang. Selain peran deteksi dan penghapusan, 
+\textit{anti-spyware} juga berfungsi memperkuat lapisan keamanan digital 
+dengan mencegah eksekusi maupun inisiasi aktivitas \textit{spyware} lebih 
+lanjut di perangkat korban. Dengan integrasi ke pengamanan \textit{endpoint} 
+dan pengawasan aplikasi, \textit{anti-spyware} menjadi bagian penting dari 
+strategi proteksi data modern.
 
-Tabel \ref{tbl:harga3} diimpor dari berkas eksternal \textit{table/tabel1.tex} menggunakan perintah \textit{input}. 
-Dengan demikian, jika tabel tersebut perlu diubah, cukup mengubah pada berkas eksternal tersebut tanpa perlu mengubah pada berkas utama ini.
+\textcite{qabalin2022android} menekankan bahwa modul deteksi \textit{spyware} 
+merupakan inti dari mekanisme \textit{anti-spyware} dalam ekosistem 
+perangkat Android. Dengan kemampuan membedakan aplikasi \textit{spyware} 
+dari aplikasi resmi, \textit{anti-spyware} menjaga perlindungan perangkat 
+agar terbebas dari ancaman pengumpulan data tersembunyi oleh program jahat. 
+Sistem \textit{anti-spyware} dirancang untuk mengenali ciri-ciri aplikasi 
+yang melakukan pemantauan, pengumpulan informasi, perekaman aktivitas, atau 
+perubahan pengaturan tanpa persetujuan pengguna sebagai bagian dari fungsi 
+pengintaian.
 
-\input table/tabel1.tex
+\subsection{Mekanisme Deteksi \textit{Anti-Spyware}}
+Untuk mengidentifikasi dan mencegah aktivitas pengintaian yang dilakukan 
+\textit{spyware}, berbagai mekanisme deteksi telah dikembangkan dalam 
+solusi keamanan modern. Setiap mekanisme berupaya mengenali keberadaan 
+\textit{spyware} melalui pendekatan yang berbeda, baik dengan mencocokkan 
+ciri khas \textit{malware} yang sudah diketahui, menganalisis perilaku 
+mencurigakan selama program berjalan, maupun menilai karakteristik yang 
+tidak biasa berdasarkan aturan dan skor tertentu. Beberapa penelitian juga 
+mengusulkan pemanfaatan teknik pembelajaran mesin untuk meningkatkan akurasi 
+deteksi terhadap varian \textit{spyware} baru yang sulit dikenali dengan 
+metode tradisional. Secara umum, mekanisme deteksi \textit{anti-spyware} 
+dapat dikelompokkan ke dalam \textit{signature-based detection}, 
+\textit{behavior-based} dan \textit{heuristic detection}, pendekatan 
+\textit{machine learning-based detection}, serta deteksi berbasis trafik jaringan.
 
-
-% -- Example of long table --
-\subsubsection{Tabel yang Sangat Panjang}
-Jika tabel terlalu panjang sehingga tidak muat dalam satu halaman, gunakan paket 
-\textit{longtable} untuk membuat tabel yang dapat terpotong ke halaman berikutnya, 
-seperti pada Tabel \ref{tbl:longtable1}.
-
-\begin{longtable}{@{\extracolsep{\fill}} l c r r}
-\caption{Comprehensive Data Table Example}\label{tbl:longtable1} \\
-\toprule
-\textbf{ID} & \textbf{Name} & \textbf{Score} & \textbf{Rank} \\
-\midrule
-\endfirsthead
-
-\caption{Comprehensive Data Table Example (lanjutan)} \\
-\toprule
-\textbf{ID} & \textbf{Name} & \textbf{Score} & \textbf{Rank} \\
-\midrule
-\endhead
-
-\midrule
-\multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya}} \\
-%\bottomrule
-\endfoot
-
-\bottomrule
-\endlastfoot
-
-% === Table Data ===
-1 & Alice Smith & 89 & 5 \\
-2 & Bob Johnson & 93 & 3 \\
-3 & Carol Davis & 95 & 2 \\
-4 & Daniel Wilson & 88 & 6 \\
-5 & Eve Thompson & 97 & 1 \\
-6 & Frank Brown & 85 & 7 \\
-7 & Grace Lee & 91 & 4 \\
-8 & Henry Miller & 80 & 9 \\
-9 & Irene Garcia & 83 & 8 \\
-10 & Jack Robinson & 78 & 10 \\
-% Repeat with more rows to make it long
-11 & Kevin Harris & 76 & 11 \\
-12 & Laura Martin & 75 & 12 \\
-13 & Michael Clark & 74 & 13 \\
-14 & Natalie Lewis & 73 & 14 \\
-15 & Olivia Walker & 72 & 15 \\
-16 & Peter Hall & 71 & 16 \\
-17 & Quinn Allen & 70 & 17 \\
-18 & Rachel Young & 69 & 18 \\
-19 & Samuel King & 68 & 19 \\
-20 & Tina Wright & 67 & 20 \\
-21 & Uma Scott & 66 & 21 \\
-22 & Victor Green & 65 & 22 \\
-23 & Wendy Adams & 64 & 23 \\
-24 & Xavier Nelson & 63 & 24 \\
-25 & Yolanda Carter & 62 & 25 \\
-26 & Zachary Perez & 61 & 26 \\
-27 & Amelia Baker & 60 & 27 \\
-28 & Benjamin Rivera & 59 & 28 \\
-29 & Charlotte Rogers & 58 & 29 \\
-30 & David Murphy & 57 & 30 \\
-31 & Ethan Cooper & 56 & 31 \\
-32 & Fiona Reed & 55 & 32 \\
-33 & George Bailey & 54 & 33 \\
-34 & Hannah Cox & 53 & 34 \\
-35 & Isaac Howard & 52 & 35 \\
-36 & Julia Ward & 51 & 36 \\
-37 & Kyle Flores & 50 & 37 \\
-38 & Lily Bell & 49 & 38 \\
-39 & Mason Sanders & 48 & 39 \\
-40 & Nora Patterson & 47 & 40 \\
-41 & Owen Ramirez & 46 & 41 \\
-42 & Penelope Torres & 45 & 42 \\
-43 & Quentin Foster & 44 & 43 \\
-44 & Rebecca Gonzales & 43 & 44 \\
-45 & Sebastian Bryant & 42 & 45 \\
-46 & Taylor Alexander & 41 & 46 \\
-47 & Ursula Russell & 40 & 47 \\
-48 & Vincent Griffin & 39 & 48 \\
-49 & William Diaz & 38 & 49 \\
-50 & Zoe Simmons & 37 & 50 \\
-% (You can easily extend this list to hundreds of rows)
-\end{longtable}
-
-\subsubsection{Beberapa Contoh Penulisan Rumus atau Persamaan Matematika Menggunakan LaTeX Termasuk Penomorannya}
-Contoh rumus matematika dapat ditulis seperti pada Persamaan \ref{eq:contoh1} di bawah ini. 
-Penomoran persamaan diletakkan di sebelah kanan, dan rumus ditulis dalam mode \textit{display math}.
-\begin{equation}
-E = mc^2
-\label{eq:contoh1}
-\end{equation}
-
-Contoh lain penulisan rumus matematika yang lebih kompleks dapat ditulis seperti pada Persamaan \ref{eq:rumus2}.
-
-\begin{align}
-f(x) &= ax^2 + bx + c \\
-f'(x) &= \frac{d}{dx}(ax^2 + bx + c) \notag \\ % tidak menampilkan nomor pada baris ini
-      &= 2ax + b \label{eq:rumus2}
-\end{align}
-
-Jika rumus terlalu panjang untuk ditulis dalam satu baris, gunakan lingkungan \textit{multline} seperti pada Persamaan \ref{eq:rumus3} di bawah ini.
-\begin{multline} 
-y = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + a_7x^7 \\
-    + a_8x^8 + a_9x^9 + a_{10}x^{10} \label{eq:rumus3}
-\end{multline}
-
-Jika ada penurunan rumus yang terdiri dari beberapa baris, namun tidak memerlukan penomoran pada setiap baris, gunakan lingkungan \textit{align*}, misalnya:
-
-\begin{align*} 
-S &= \sum_{i=1}^{n} i^2 \\
-  &= 1^2 + 2^2 + 3^2 + \cdots + n^2 \\
-  &= \frac{n(n + 1)(2n + 1)}{6}
-\intertext{Contoh lainnya adalah rumus untuk mencari nilai rata-rata fungsi $f(x)$ pada interval $[p, q]$:}
-\bar{f} &= \frac{1}{q - p} \int_{p}^{q} f(x) \, dx \\
-        &= \frac{1}{q - p} \int_{p}^{q} (ax^2 + bx + c) \, dx \\
-        &= \frac{1}{q - p} \left[ \frac{a}{3}x^3 + \frac{b}{2}x^2 + cx \right]_p^q \\
-        &= \frac{a(q^3 - p^3)}{3(q - p)} + \frac{b(q^2 - p^2)}{2(q - p)} + c \label{eq:rumus4}
-\end{align*}
-
-
-
-\subsection{Algoritma, Pseudocode, atau Kode}
-Contoh penulisan algoritma atau pseudocode dapat ditulis seperti pada Kode \ref{alg:contoh1} di bawah ini. 
-Gunakan paket \textit{listings} untuk menulis source code dalam bahasa pemrograman tertentu, seperti pada Kode \ref{lst:contoh1}. 
-
-
-% -- Example of pseudocode and source code listing --
-% -- Gunakan minipage agar listing tidak terpotong ke halaman berikutnya --
-\begin{minipage}{\textwidth} 
-\begin{lstlisting}[frame=lines, captionpos=t, caption={Contoh pseudocode}, label={alg:contoh1}]
-ALGORITHM HelloWorld
-   PRINT "Hello, World!"
-END ALGORITHM
-\end{lstlisting}
-\end{minipage}
-
-\begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Python, frame=single, caption={Contoh source code Python}, captionpos=t, label={lst:contoh1}]
-def hello_world():
-    print("Hello, World!")       
-hello_world()
-\end{lstlisting}
-\end{minipage}
-
-
-\section{Beberapa Kesalahan Penulisan yang Sering Terjadi}
-\subsection{Penggunaan Kata "di mana" atau "dimana"}
-Banyak yang menuliskan kata "di mana" atau "dimana" sebagai pengganti kata "which" dalam bahasa Inggris. 
-Padahal, penggunaan kata "di mana" atau "dimana" tidak tepat dalam konteks tersebut. Demikian juga untuk kata serupa, misalnya "yang mana".
-Kata "di mana" atau "dimana" ini harus diganti dengan kata lain, seperti "dengan", "tempat", "yang", dan sebagainya tergantung kalimatnya.
-Penjelasan lengkap dapat dilihat pada \autocite{BPBI}.
-
-\subsection{Penggunaan Kata "sedangkan" dan "sehingga"}
-
-\begin{table}[t]
-  \begin{tabular}{|c|l|l|}
-  \hline
-  Kata & Salah & Benar \\ \hline
-  sedangkan & \begin{tabular}[c]{@{}c@{}}Sedangkan sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna,\\ sedangkan sistem baru belum siap.\end{tabular} \\ \hline
-  sehingga & \begin{tabular}[c]{@{}c@{}}Sehingga sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna sehingga\\ sistem baru belum siap.\end{tabular} \\ \hline
-  \end{tabular}
-  \caption{Contoh penggunaan kata "sedangkan" dan "sehingga"}
-  \label{tbl:sedangkan_sehingga}
-\end{table}
-
-Kata "sedangkan" dan "sehingga" adalah kata hubung atau konjungsi. 
-Konjungsi adalah kata atau ungkapan yang menghubungkan satuan bahasa 
-(kata, frasa, klausa, dan kalimat). 
-Konjungsi dapat dibagi menjadi konjungsi intrakalimat dan antarkalimat.  
-Kata "sedangkan" menghubungkan dua klausa yang bersifat kontrasif, 
-sedangkan "sehingga" menghubungkan dua klausa yang bersifat kausal. 
-Dalam ragam formal, kata hubung “sedangkan” dan “sehingga” hanya dapat digunakan 
-sebagai konjungsi intrakalimat sehingga kedua konjungsi itu \textbf{tidak dapat diletakkan pada awal kalimat}.
-Selain itu, penggunaan kata "sedangkan" harus didahului oleh koma (,), sedangkan kata "sehingga" tidak perlu didahului oleh koma (,).
-Contoh penggunaan yang benar dan salah dapat dilihat pada Tabel \ref{tbl:sedangkan_sehingga}.
-
-
-\subsection{Penggunaan Istilah yang Tidak Baku}
-Ada beberapa istilah yang sering digunakan dalam pembicaraan sehari-hari, tetapi tidak baku dalam penulisan ilmiah.
-Beberapa istilah tersebut antara lain:
 \begin{enumerate}
-  \item analisa $\rightarrow$ analisis
-  \item eksisting atau existing $\rightarrow$ yang ada atau saat ini
-  \item bisnis proses $\rightarrow$ proses bisnis
-  \item user $\rightarrow$ pengguna
-  \item system $\rightarrow$ sistem
-  \item database $\rightarrow$ basis data
-  \item aktifitas $\rightarrow$ aktivitas
-  \item efektifitas $\rightarrow$ efektivitas
-  \item sosial media $\rightarrow$ media sosial
+    \item \textit{Signature Based Detection}
+
+    Menurut \textcite{baldota2025review}, banyak solusi \textit{anti-spyware} tradisional 
+    mengandalkan \textit{signature-based detection}, yaitu mencocokkan pola 
+    biner atau ciri khas \textit{spyware} yang sudah diketahui dengan berkas 
+    atau proses yang sedang diperiksa. Pendekatan ini efektif untuk 
+    \textit{spyware} yang sudah dikenal, tetapi kurang mampu mendeteksi 
+    varian baru atau \textit{spyware} yang di-\textit{obfuscate} karena 
+    tidak memiliki \textit{signature} yang tersimpan di basis data.
+
+    \item \textit{Behavior Based dan Heuristic Detection}
+
+    \textit{Behavior-based detection} memonitor aktivitas program, seperti 
+    akses berkas, perubahan \textit{registry}, koneksi jaringan, dan 
+    interaksi dengan API sistem, untuk mengidentifikasi pola perilaku 
+    yang menyerupai \textit{spyware}, misalnya pengambilan data sensitif 
+    atau aktivitas tersembunyi. Mekanisme ini sering dipadukan dengan 
+    \textit{heuristic detection}, yang menggunakan aturan atau 
+    \textit{scoring} untuk menilai apakah kombinasi perilaku tertentu 
+    cukup mencurigakan untuk dikategorikan sebagai ancaman \autocite{baldota2025review}.
+
+    \item \textit{Machine Learning Based Detection}
+
+    Pendekatan modern banyak memanfaatkan algoritma \textit{machine 
+    learning} untuk membedakan \textit{spyware} dari aplikasi resmi 
+    berdasarkan fitur statis maupun dinamis \autocite{baldota2025review}. 
+    Penelitian yang dilakukan oleh \textcite{abualhaj2024decisiontree} menunjukkan 
+    bahwa model \textit{decision tree} yang dioptimalkan mampu 
+    mengklasifikasikan sampel \textit{spyware} dengan akurasi tinggi 
+    pada dataset \textit{malware}, sehingga dapat dijadikan modul deteksi 
+    pada sistem \textit{anti-spyware}. Sementara itu, penelitian oleh 
+    \textcite{wang2025atsdetector} mengembangkan deteksi \textit{Trojan spyware} 
+    Android dengan menggabungkan fitur statis seperti \textit{permission} 
+    dan metadata aplikasi serta fitur dinamis dari perilaku 
+    \textit{runtime}, kemudian melatih model \textit{machine learning} 
+    untuk membedakan \textit{spyware} dari aplikasi \textit{benign}.
+
+    \item Deteksi Berbasis Trafik Jaringan
+
+    Metode SNDMI yang diperkenalkan dalam penelitian oleh \textcite{peng2024sndmi} 
+    memfokuskan deteksi \textit{spyware} pada analisis pola trafik jaringan, 
+    termasuk penggunaan trafik \textit{inducement} dan fitur-fitur 
+    \textit{flow} untuk melatih model LightGBM. Pendekatan ini menempatkan 
+    modul deteksi di level jaringan sehingga \textit{spyware} dapat 
+    diidentifikasi melalui pola komunikasi ke server eksternal tanpa harus 
+    selalu bergantung pada inspeksi berkas atau proses pada \textit{endpoint}.
+
 \end{enumerate}
 
-\subsection{Pemisah Desimal dan Ribuan}
-Tanda pemisah desimal dalam bahasa Indonesia adalah tanda koma, contoh:
-\begin{enumerate}
-  \item (Salah) Akurasi naik menjadi 50.6\% 
-  \item (Benar) Akurasi naik menjadi 50,6\% 
-\end{enumerate}
+\section{Studi Sebelumnya}
 
-\subsection{Daftar atau \textit{List}}
-Ada beberapa aturan penulisan daftar atau \textit{list} yang perlu diperhatikan, antara lain:
-\begin{enumerate}[a)]
-\item Jika memungkinkan, hindari penggunaan “bullet points” atau sejenisnya. Sebaiknya, gunakan angka (1, 2, 3, ...) atau huruf (a, b, c, …). Dengan demikian, pembaca dapat dengan mudah melihat jumlah \textit{item} atau \textit{list}. 
-\item Jika dalam daftar hanya ada satu item, tidak perlu menggunakan nomor urut.
-\item Penjelasan atau deskripsi suatu item sebaiknya menyatu dengan judul item tersebut, tidak berbeda halaman. Contoh yang salah: judul item ada di halaman 10, namun deskripsinya di halaman 11. Sebaiknya pindahkan judul tersebut ke halaman 11.
-\item Jika penjelasan atau deskripsi suatu item cukup panjang, misalnya lebih dari 1 halaman atau terdiri atas beberapa paragraf, sebaiknya setiap item tersebut dijadikan judul subbab, kecuali jika level subbab sudah mencapai level 4. 
-\end{enumerate}
+Studi sebelumnya diperlukan untuk memahami perkembangan penelitian 
+terkait \textit{data crawling}, mekanisme pengumpulan data oleh 
+\textit{spyware}, serta berbagai teknik eksfiltrasi dan deteksi yang 
+digunakan dalam keamanan siber. Kajian ini memberikan gambaran mengenai 
+pendekatan, metode, serta keterbatasan penelitian terdahulu yang menjadi 
+dasar dalam merumuskan ruang lingkup dan kontribusi penelitian ini.
 
-\subsection{Penggunaan Kata "masing-masing" dan "setiap"}
-Kata “masing-masing” digunakan di belakang kata yang diterangkan, misalnya 
-"Setiap proses menggunakan algoritma masing-masing". Kata “tiap-tiap” atau “setiap”
-ditempatkan di depan kata yang diterangkan, misalnya
-"Setiap proses menggunakan algoritma tertentu".
+\input{table/tabel2-1}

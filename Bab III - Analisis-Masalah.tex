@@ -6,19 +6,228 @@
 % ============================================================================================
 \chapter{ANALISIS MASALAH}
 \label{chap:analisis-masalah}
-\section{Analisis Kondisi Saat Ini}
-Menurut \textcite{laudon2020}, gambarkan terlebih dahulu model konseptual sistem yang ada saat ini. Model konseptual ini berisi berbagai komponen atau subsitem dan interaksi antarsubsistem tersebut. Setelah itu, berikan penjelasan tentang masalah yang ada pada sistem tersebut. Paragraf berikut berisi contoh penjabaran masalah sistem informasi fasilitas kesehatan untuk pasien \autocite{pressman2019}. 
-\section{Analisis Kebutuhan}
-\lipsum[4]
-\subsection{Identifikasi Masalah Pengguna}
-\lipsum[5]
-\subsection{Kebutuhan Fungsional}
-\lipsum[6]
-\subsection{Kebutuhan Nonfungsional}
-\lipsum[7]
 
-\section{Analisis Pemilihan Solusi}
+\section{Analisis Kondisi Saat Ini}
+Bagian ini menjelaskan kondisi saat ini terkait bagaimana \textit{spyware} 
+tradisional melakukan proses mulai dari infeksi, pengambilan data, hingga 
+eksfiltrasi. Alur kerja \textit{spyware} saat ini digunakan sebagai dasar 
+untuk memahami pola kerja \textit{spyware} yang ada saat ini.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{image/kondisi-saat-ini.png}
+    \caption{Alur Kerja \textit{Data Crawling} dan Eksfiltrasi \textit{Spyware} Saat Ini}
+    \label{fig:alur-spyware}
+\end{figure}
+
+Gambar \ref{fig:alur-spyware} menggambarkan alur kerja umum \textit{spyware} 
+dalam melakukan pengambilan dan pengiriman data dari perangkat target. 
+Proses dimulai dari tahap infeksi atau eksekusi awal, ketika \textit{spyware} 
+berhasil dijalankan di dalam sistem target dan menempatkan dirinya. 
+Setelah aktif, \textit{spyware} memulai tahap \textit{data crawling}, yaitu 
+proses pengumpulan data secara otomatis dan sistematis terhadap berbagai 
+informasi sensitif. Data yang terkumpul kemudian tidak langsung dikirimkan, 
+melainkan diproses terlebih dahulu melalui \textit{local staging}, misalnya 
+dengan kompresi, enkripsi, atau pemecahan data ke dalam paket kecil agar lebih 
+mudah disamarkan. 
+Tahap selanjutnya adalah eksfiltrasi, yaitu proses pengiriman data yang telah 
+dipaketkan menuju infrastruktur penyerang melalui kanal komunikasi tertentu. 
+Setelah itu data mencapai \textit{exfiltration endpoint}.
+
+\subsection{Tantangan \textit{Data Crawling} dan Eksfiltrasi \textit{Spyware}}
+Pada bagian ini dibahas berbagai hambatan yang muncul ketika \textit{spyware} berusaha menjalankan kedua proses tersebut tanpa terdeteksi oleh sistem keamanan. 
+
+\begin{enumerate}
+    \item Aktivitas \textit{crawling} yang \textit{high noise} dan mudah terpantau 
+    
+    Proses \textit{crawling} sering melibatkan akses file, direktori, dan API secara intensif 
+    dan berulang. Aktivitas ini menghasilkan pola I/O yang mencolok dan dapat terdeteksi 
+    sebagai anomali oleh sistem keamanan. Ketika tidak ada mekanisme untuk mengurangi jejak 
+    atau menyesuaikan frekuensi akses, pola \textit{crawling} menjadi mudah dibedakan dari 
+    perilaku aplikasi normal.
+
+    \item Eksfiltrasi melalui kanal standar yang mudah dipantau
+     
+    Pengiriman data sering dilakukan melalui protokol umum seperti HTTP/HTTPS, email, FTP, 
+    atau DNS sederhana. Meskipun protokol tersebut merupakan bagian dari trafik normal 
+    dalam suatu jaringan, pola eksfiltrasi yang tidak disamarkan atau tidak menyerupai 
+    komunikasi aplikasi sah tetap dapat terdeteksi oleh \textit{anti-spyware}, terutama 
+    ketika frekuensi, ukuran, atau struktur paketnya berbeda dari penggunaan wajar.
+
+    \item Pola eksfiltrasi yang kasar atau \textit{bulk transfer}. 
+    
+    Data kerap dikirim dalam jumlah besar sekaligus atau pada interval waktu tetap. 
+    Pola pengiriman yang seragam dan tidak dinamis seperti ini mudah dikenali sebagai 
+    perilaku mencurigakan, karena berbeda dari arus komunikasi normal yang biasanya 
+    lebih bervariasi.
+
+    \item Risiko deteksi dari pola akses yang intensif. 
+    
+    \textit{Crawling} yang melibatkan pembacaan \textit{file}, pemindaian direktori, atau 
+    interaksi API dalam frekuensi tinggi dapat menimbulkan pola aktivitas yang berbeda 
+    dari aplikasi normal. Sistem keamanan berbasis perilaku dapat mengenali anomali ini 
+    sebagai indikasi aktivitas tidak sah.
+\end{enumerate}
+
+\subsection{\textit{Gap Analysis}}
+Pada bagian ini disajikan \textit{gap analysis} yang mengidentifikasi perbedaan antara kondisi saat ini (\textit{As-Is}) dan kondisi ideal (\textit{To-Be}) terkait kemampuan pengumpulan data (\textit{crawling}) dan proses eksfiltrasi. Tabel~\ref{tbl:gap-analysis} merangkum domain masalah utama, observasi kondisi saat ini, kesenjangan yang teridentifikasi, serta kondisi ideal yang menjadi sasaran perbaikan.
+\input{table/tabel3-1}
+
+\section{Analisis Kebutuhan}
+\subsection{Identifikasi Masalah Pengguna}
+
+Kelompok pengguna utama yang memanfaatkan hasil pengujian kapabilitas deteksi antivirus terhadap \textit{spyware} mode \textit{stealth} terdiri atas tiga kelompok: peneliti keamanan siber, pengembang \textit{malware} uji, dan penyedia antivirus. Ketiganya berperan penting dalam memastikan proses pengembangan, pengujian, serta analisis hasil deteksi berjalan aman, terkendali, dan memberikan hasil yang valid.
+
+\begin{enumerate}
+    \item Peneliti Keamanan Siber \\
+    Kelompok ini memanfaatkan hasil pengujian untuk mengevaluasi efektivitas mekanisme deteksi terhadap ancaman \textit{spyware} dengan mode \textit{stealth} serta mengidentifikasi celah-celah deteksi yang masih ada. Temuan dari penelitian ini digunakan sebagai dasar pembuatan rekomendasi teknis dan strategi penguatan sistem pertahanan dengan tujuan meningkatkan kemampuan deteksi dan respons terhadap skenario pengumpulan data (\textit{data crawling}) dan eksfiltrasi yang bersifat tersembunyi.
+
+    \item Pengembang \textit{Malware} Uji \\
+    Kelompok ini bertugas membangun \textit{spyware} dengan mode \textit{stealth} yang meniru perilaku nyata, terutama pada tahap \textit{data crawling} dan eksfiltrasi. Tantangan utama mereka adalah mengimplementasikan perilaku pengumpulan dan pengiriman data secara tersembunyi tanpa menyebabkan kerusakan nyata maupun terdeteksi terlalu dini oleh antivirus. Selain itu, pengembang harus memastikan keamanan lingkungan uji agar \textit{malware} tidak keluar dari batas laboratorium.
+
+    \item Penyedia Antivirus atau EDR \\
+    Penyedia antivirus atau EDR menjadi pengguna yang memperoleh manfaat praktis dari hasil penelitian berupa bukti empiris terkait \textit{blindspot} produk, rekomendasi konfigurasi telemetri, dan \textit{scenario-driven test cases}. Informasi ini dapat digunakan untuk memperbaiki aturan deteksi, menambah cakupan pengumpulan telemetri, serta meningkatkan kebijakan respons insiden sehingga produk lebih tangguh terhadap varian \textit{stealth} yang berkembang.
+\end{enumerate}
+
+\subsection{Kebutuhan Fungsional}
+
+Kebutuhan fungsional merupakan spesifikasi yang mendefinisikan fitur-fitur inti 
+yang harus disediakan oleh \textit{malware} uji agar dapat memenuhi tujuan dalam 
+proses penelitian dan pengembangan. Kebutuhan ini dirancang untuk memastikan 
+setiap kemampuan utama dapat dijalankan secara efektif dalam lingkungan uji 
+sesuai skenario penelitian.
+
+\input{table/tabel3-2}
+
+\subsection{Kebutuhan Non-Fungsional}
+Kebutuhan non-fungsional mendefinisikan karakteristik kualitas, batasan, dan 
+standar yang harus dipenuhi oleh \textit{malware} uji selama pelaksanaan 
+eksperimen. Kebutuhan ini berfokus pada aspek keamanan, kepatuhan, efisiensi, 
+serta dampak perilaku \textit{malware} di lingkungan pengujian untuk memastikan 
+penelitian berjalan dengan aman, terkendali, dan sesuai prinsip etika akademik.
+
+\input{table/tabel3-3}
+
+\section{Analisis Pemilihan Solusi }
 \subsection{Alternatif Solusi}
-\lipsum[8]
-\subsection{Analisis Penentuan Solusi}
-\lipsum[9]
+
+Permasalahan yang ditemukan dalam penelitian ini perlu dianalisis secara menyeluruh agar arah penyusunan solusi menjadi lebih terarah dan relevan dengan tujuan penelitian. Hasil identifikasi terhadap berbagai kendala yang muncul selama tahap studi literatur dan observasi awal kemudian dirangkum dalam Tabel~\ref{tbl:permasalahan-utama}. Tabel tersebut memuat daftar masalah utama beserta dampaknya terhadap proses \textit{data crawling} dan eksfiltrasi dalam rangka menguji kapabilitas deteksi \textit{anti-spyware} yang ada saat ini.
+
+\input{table/tabel3-4}
+
+Pada tahap ini, beberapa solusi teknis diidentifikasi sebagai alternatif untuk 
+menangani permasalahan proses \textit{data crawling} dan eksfiltrasi dalam 
+pengujian kapabilitas deteksi antivirus terhadap \textit{spyware} dengan teknik 
+\textit{stealth} yang semakin berkembang. Setiap solusi menawarkan pendekatan 
+berbeda dengan keunggulan dan keterbatasan masing-masing.
+
+\input{table/tabel3-5}
+
+Alternatif solusi pertama (AS-01) menggunakan teknik \textit{living off the land} 
+di mana \textit{spyware} memanfaatkan \textit{tools} asli sistem operasi seperti 
+PowerShell, WMI, dan \textit{command line tools} yang sudah dipercaya sistem. 
+Dengan menjalankan \textit{crawling} dan \textit{eksfiltrasi} melalui \textit{tools} 
+bawaan ini, aktivitas \textit{spyware} dilakukan secara “alami” dan menyerupai 
+operasi sistem yang biasa, sehingga dapat mengurangi risiko deteksi oleh 
+\textit{anti malware} yang mengandalkan \textit{signature} dan \textit{behavior} 
+pencarian program asing. Namun, keterbatasannya adalah fungsi \textit{tool} 
+bawaan yang tidak selalu cukup lengkap untuk semua kebutuhan eksfiltrasi, dan 
+jika aktivitas terlalu intens, dapat memicu alarm \textit{behavioral monitoring}.
+
+Alternatif solusi kedua (AS-02) berfokus pada penyamaran pola eksfiltrasi 
+melalui pengiriman data secara bertahap dalam ukuran kecil sehingga aliran trafik 
+yang dihasilkan menyerupai aktivitas jaringan normal. Dengan memecah 
+\textit{payload} menjadi beberapa bagian dan mengatur interval pengiriman agar 
+tidak membentuk lonjakan mencolok, proses eksfiltrasi tidak tampak seperti 
+\textit{transfer} data berukuran besar yang biasanya mudah dideteksi oleh sistem 
+keamanan berbasis \textit{anomaly detection}. Pendekatan ini efektif untuk 
+menurunkan visibilitas eksfiltrasi di mata \textit{anti-spyware} karena pola trafiknya 
+mengikuti \textit{baseline} komunikasi reguler pada host. Namun, konsekuensinya 
+adalah waktu pengiriman data menjadi lebih lama dan \textit{throughput} 
+eksfiltrasi menurun, sehingga proses dapat terhambat apabila ukuran data besar 
+atau koneksi tidak stabil.
+
+Alternatif solusi AS-03 (\textit{Obfuscation custom payload} dan \textit{command}) 
+melakukan teknik pengacakan dan pengenkripsian pada \textit{payload} 
+\textit{malware}, perintah yang dikirim, serta komunikasi data \textit{crawling} dan 
+eksfiltrasi. Tujuannya adalah menghilangkan pola maupun \textit{signature} yang 
+mudah dikenali oleh \textit{anti malware} dan sistem deteksi canggih berbasis 
+\textit{machine learning}. Dengan \textit{obfuscation}, \textit{malware} selalu tampak 
+unik dan sulit dianalisis secara statis ataupun dinamis tanpa menimbulkan 
+kecurigaan. Meski begitu, penggunaan \textit{obfuscation} yang berlebihan dapat 
+menimbulkan anomali trafik yang mudah dicurigai, dan dalam \textit{sandbox} 
+modern, teknik \textit{obfuscation} semakin terbatas karena analisis dinamis kini 
+lebih pintar dalam mendeteksi modifikasi kode maupun perilaku terselubung.
+
+Alternatif solusi AS-04 menerapkan teknik \textit{anti-forensics} dengan cara 
+menghapus \textit{memory artifacts} secara berkala untuk meminimalkan jejak yang 
+dapat dianalisis oleh pihak keamanan atau investigator forensik. Pendekatan ini 
+memastikan bahwa data sensitif, seperti hasil \textit{crawling} sementara, 
+\textit{payload} sebelum dienkripsi, atau struktur \textit{buffer}, tidak bertahan lama di 
+memori. Dengan menghilangkan artefak secara rutin, \textit{spyware} dapat 
+mengurangi peluang terdeteksi oleh mekanisme keamanan yang memeriksa 
+perubahan memori atau mencari pola residual dari aktivitas berbahaya. Namun, 
+teknik ini memiliki risiko karena proses pembersihan yang terlalu agresif dapat 
+menghapus data yang masih dibutuhkan oleh modul \textit{crawling} atau 
+eksfiltrasi, serta menambah \textit{overhead} eksekusi yang dapat mempengaruhi 
+stabilitas operasi.
+
+Alternatif solusi AS-05 menggabungkan teknik \textit{fileless execution}, 
+pemanfaatan \textit{Living Off the Land} (LOTL) tools, \textit{obfuscation}, serta 
+eksfiltrasi \textit{low profile} untuk meminimalkan jejak forensik dan meningkatkan 
+kemampuan penyamaran aktivitas \textit{spyware}. Dengan menjalankan instruksi 
+langsung di memori dan memanfaatkan \textit{executable} bawaan sistem, modul 
+\textit{spyware} dapat beroperasi tanpa meninggalkan file berbahaya di disk, 
+sehingga perilakunya tampak seperti proses sistem normal di mata 
+\textit{anti-spyware}. \textit{Obfuscation} pada perintah dan \textit{payload} membantu 
+menyembunyikan maksud sebenarnya dari analisis statis, sementara eksfiltrasi 
+\textit{low profile} memastikan transfer data berlangsung dalam pola kecil, teratur, 
+dan menyerupai komunikasi reguler. Kombinasi teknik ini memberikan tingkat 
+\textit{stealth} yang tinggi, tetapi juga menambah kompleksitas implementasi karena 
+membutuhkan kontrol eksekusi yang lebih halus dan penanganan yang tepat agar 
+tidak menimbulkan \textit{error} atau perilaku mencurigakan.
+
+\subsubsection*{III.3.2 Analisis Penentuan Solusi}
+
+Analisis penentuan solusi dilakukan dengan pendekatan \textit{Weighted Scoring Model} 
+(WSM), yaitu metode yang memberi bobot serta skor pada setiap alternatif solusi 
+berdasarkan sejumlah parameter penting yang telah ditetapkan. Setiap parameter seperti 
+akurasi deteksi, efisiensi, skalabilitas, keamanan eksperimen, dan relevansi empiris 
+diberi bobot sesuai tingkat kepentingannya dalam konteks pengujian \textit{malware stealth} 
+dan AV/EDR.
+
+Selanjutnya, masing-masing solusi dievaluasi dan diberi skor pada rentang 1 (sangat buruk) 
+sampai dengan 5 (sangat baik) untuk setiap parameter. Nilai total dari tiap alternatif 
+dihitung dengan mengalikan skor pada setiap parameter dengan bobotnya, lalu menjumlahkan 
+seluruh hasil tersebut. Rumus perhitungan dituliskan sebagai berikut:
+
+\[
+\text{Skor Total Solusi} = \sum_{i} \left( \text{Skor Kriteria}_i \times \text{Bobot}_i \right)
+\]
+
+Proses penilaian ini memberikan gambaran objektif mengenai keunggulan dan kelemahan relatif 
+dari setiap opsi, sehingga solusi dengan nilai tertinggi secara terukur lebih unggul pada 
+aspek-aspek utama penelitian. Dengan demikian, metode \textit{weighted scoring} menjadi panduan 
+ilmiah yang transparan dan sistematis dalam pemilihan pendekatan teknis, sekaligus menjaga hasil 
+tetap relevan dan terfokus pada tujuan penelitian.
+
+\input{table/tabel3-6}
+
+Berdasarkan hasil perhitungan \textit{weighted scoring model}, alternatif solusi AS{-}05, yaitu 
+\textit{fileless execution} dengan kombinasi LOLTL, \textit{obfuscation}, dan eksfiltrasi \textit{low profile}, 
+dipilih sebagai opsi terbaik. Solusi ini memperoleh skor total tertinggi karena menunjukkan performa 
+optimal hampir di seluruh parameter utama, khususnya pada aspek akurasi \textit{stealth}, kesesuaian 
+dengan tujuan penelitian, \textit{overhead} kinerja, serta risiko operasional dan stabilitas.
+
+Pendekatan \textit{fileless execution} memungkinkan \textit{spyware} berjalan sepenuhnya di 
+memori, sehingga meminimalkan artefak pada disk dan menurunkan kemungkinan terdeteksi melalui 
+pemindaian berbasis \textit{signature} maupun analisis forensik. Dengan memanfaatkan LOLBins/LOLBAS 
+(tool bawaan OS yang dipercaya), proses \textit{crawling} dan eksfiltrasi data dapat dilakukan tanpa 
+meninggalkan jejak mencolok, sementara teknik \textit{obfuscation} serta kanal eksfiltrasi \textit{low 
+profile} semakin memperkuat kemampuan penyamaran aktivitas \textit{spyware}.
+
+Meskipun implementasinya lebih kompleks, AS{-}05 memberikan keleluasaan kontrol bagi \textit{engineer} 
+untuk mengatur berbagai skenario \textit{evasive} dan menguji ketahanan sistem AV/EDR secara menyeluruh. 
+Selain itu, solusi ini tetap memperhatikan kestabilan operasional selama eksperimen melalui perancangan 
+lingkungan yang terisolasi serta penerapan mekanisme pemantauan risiko yang disiplin, sehingga keamanan 
+lingkungan pengujian tetap terjaga.

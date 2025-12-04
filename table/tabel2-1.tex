@@ -1,0 +1,54 @@
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\begin{longtable}{|p{0.5cm}|p{3cm}|p{2.3cm}|p{3.6cm}|p{3.6cm}|}
+\caption{Studi Sebelumnya}
+\label{tbl:studi-sebelumnya} \\
+\hline
+\textbf{No} &
+\textbf{Judul Penelitian (Penulis)} &
+\textbf{Metode} &
+\textbf{Hasil Utama} &
+\textbf{Keterbatasan} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{No} &
+\textbf{Judul Penelitian (Penulis)} &
+\textbf{Metode} &
+\textbf{Hasil Utama} &
+\textbf{Keterbatasan} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+1 &
+\textit{Design and Implementation of an Android Spyware Application Using a Fake Game} \autocite{salih2020spyware} &
+Perancangan sistem dan eksperimen &
+Mengembangkan \textit{spyware} Android yang melakukan \textit{data crawling} terhadap kontak, pesan, \textit{log} panggilan, akun, dan lokasi, serta mengekstraksinya secara otomatis ke server \textit{backend} melalui REST API &
+Berfokus pada Android saja, tidak membahas mekanisme \textit{stealth} tingkat lanjut atau deteksi oleh \textit{anti-spyware}. \\
+\hline
+
+2 &
+\textit{Cyber Threat Intelligence through Automated Dark Web Crawling} \autocite{jegan2024aicrawler} &
+Perancangan sistem dan eksperimen &
+Mengimplementasikan \textit{web crawling} otomatis pada \textit{dark web} dengan ekstraksi konten, pemetaan tautan, dan deteksi kredensial yang terekspos menggunakan \textit{machine learning}. &
+Fokus pada \textit{crawling} di \textit{dark web} untuk CTI, bukan \textit{crawling} internal pada perangkat korban seperti \textit{spyware}. \\
+\hline
+
+3 &
+\textit{Stealthy Data Collection and Exfiltration in Pegasus Spyware} \autocite{kareem2024pegasus} &
+Studi literatur teknis dan analisis arsitektur &
+Mendeskripsikan mekanisme \textit{data collection} dan \textit{auto-exfiltration} \textit{spyware} Pegasus, mencakup akses pesan, email, media sosial, \textit{keylogging}, rekaman audio/video, lokasi \textit{real-time}, serta pengiriman terenkripsi ke C2. &
+Tidak menyertakan implementasi uji empiris; sebagian informasi berasal dari laporan investigatif, bukan eksperimen langsung. \\
+\hline
+
+4 &
+\textit{An Emerging Threat: Fileless Malware -- A Survey and Research Challenges} \autocite{sudhakar2020fileless} &
+Studi literatur &
+Menjelaskan teknik penyembunyian dan eksfiltrasi \textit{fileless}, termasuk penggunaan \textit{PowerShell}, \textit{registry abuse}, dan \textit{memory-resident payload}. &
+Tidak membahas implementasi \textit{crawling} secara spesifik atau eksfiltrasi berbasis protokol tertentu. \\
+\hline
+
+\end{longtable}

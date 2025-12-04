@@ -1,0 +1,31 @@
+\begin{table}[H]
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\centering
+\caption{Masalah dan Dampak}
+\begin{tabular}{|c|p{6cm}|p{6.2cm}|}
+\hline
+\textbf{ID} & \textbf{Masalah} & \textbf{Dampak} \\
+\hline
+
+M-01 & 
+Proses \textit{crawling} dijalankan dari \textit{executable} di disk sehingga meninggalkan artefak. &
+Artefak di disk dapat dideteksi melalui \textit{signature-based scanning}. \\
+\hline
+
+M-02 &
+Pola akses sistem yang tidak sesuai \textit{baseline} dapat terdeteksi sebagai aktivitas abnormal. &
+Aktivitas \textit{crawling} atau pengumpulan data menjadi lebih mudah teridentifikasi oleh mekanisme deteksi berbasis perilaku, menurunkan tingkat \textit{stealth} spyware. \\
+\hline
+
+M-03 &
+Eksfiltrasi melalui protokol umum tanpa penyamaran pola trafik. &
+\textit{Anti-spyware} dapat mendeteksi anomali trafik, sehingga proses eksfiltrasi berisiko terblokir atau memicu alarm keamanan. \\
+\hline
+
+M-04 &
+Eksfiltrasi dengan volume data besar memunculkan pola trafik mencolok yang berbeda dari aktivitas normal. &
+Mekanisme deteksi dapat dengan mudah mengidentifikasi lonjakan \textit{outbound traffic} sebagai anomali. \\
+\hline
+
+\end{tabular}
+\end{table}

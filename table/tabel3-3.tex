@@ -1,0 +1,33 @@
+\begin{table}[H]
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\centering
+\caption{Kebutuhan Non-Fungsional}
+\label{tbl:kebutuhan-nonfungsional}
+
+\begin{tabular}{|p{1.5cm}|p{5cm}|p{7cm}|}
+\hline
+\textbf{ID} & \textbf{Kebutuhan} & \textbf{Penjelasan} \\
+\hline
+
+NFR-01 & Kinerja &
+Sistem harus mampu melakukan \textit{crawling} dan eksfiltrasi data tanpa menimbulkan konsumsi \textit{resource} (CPU, memori, jaringan) yang tinggi agar tidak memicu alarm \textit{anti malware} atau monitoring forensik. \\
+\hline
+
+NFR-02 & Reliabilitas &
+Segala \textit{failure} harus ditangani secara \textit{silent} (tidak menimbulkan pesan \textit{error}/\textit{alert} pada \textit{endpoint} atau sistem keamanan). \\
+\hline
+
+NFR-03 & Keamanan lingkungan uji &
+Sistem harus memastikan seluruh eksekusi \textit{malware} berlangsung dalam lingkungan \textit{virtual}/\textit{sandbox} yang benar-benar terisolasi dan tidak terhubung dengan sistem produksi atau jaringan publik. \\
+\hline
+
+NFR-04 & Kepatuhan terhadap regulasi dan etika penelitian &
+Sistem wajib mematuhi regulasi keamanan siber, etika penelitian, serta tidak menggunakan \textit{malware} untuk tujuan di luar pengujian akademik terisolasi. \\
+\hline
+
+NFR-05 & Isolasi Dampak &
+Efek dan aktivitas \textit{malware} harus benar-benar terbatas pada lingkungan uji, tidak boleh berdampak pada sistem luar (integritas lab terjaga). \\
+\hline
+
+\end{tabular}
+\end{table}
