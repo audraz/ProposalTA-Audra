@@ -82,7 +82,7 @@ komponen utama, yaitu:
    \textit{living-off-the-land} (LOTL) seperti pemanfaatan PowerShell, WMI, atau proses-proses 
    internal sistem juga digunakan untuk menyamarkan jejak eksekusi.
 
-   \item \textit{Stealth \& Anti Detection Layer}
+   \item \textit{Temporary memory buffer}
    
    \textit{Temporary memory buffer} merupakan ruang penyimpanan sementara yang menampung hasil 
    \textit{crawling} sebelum proses eksfiltrasi dilakukan. Sesuai dengan prinsip \textit{memory-resident} 
@@ -107,7 +107,7 @@ dan tidak memicu sistem deteksi \textit{anti spyware}. Oleh karena itu, teknolog
 digunakan harus mampu mengakomodasi operasi \textit{low level} pada sistem, menyediakan 
 akses ke artefak sistem, serta sekaligus mendukung eksekusi yang tersamarkan. 
 Pada Tabel \ref{tbl:teknologi-mission} dibahas teknologi yang digunakan untuk 
-mengimplementasikan setiap komponen modul \textit{Mission} serta alasan pemilihannya.
+mengimplementasikan setiap komponen modul \textit{Mission}.
 
 \input{table/tabel4-1.tex}
 
@@ -118,21 +118,10 @@ Modul \textit{Mission} dirancang untuk mengumpulkan data yang relevan dengan
 pemetaan aktivitas sistem dan pengguna, serta mendukung proses analitik pada 
 tahap selanjutnya. Data yang dikumpulkan berfokus pada artefak yang dapat 
 memberikan gambaran mengenai perilaku sistem tanpa mengambil konten sensitif 
-secara langsung. Secara garis besar, terdapat X kelompok utama data yang 
+secara langsung. Secara garis besar, terdapat 4 kelompok utama data yang 
 menjadi target \textit{crawling}.
 
 \input{table/tabel4-2.tex}
-
-Seluruh proses \textit{crawling} pada modul \textit{Mission} dijalankan di 
-dalam lingkungan terisolasi menggunakan \textit{Virtual Machine (VM)} berbasis 
-Windows 10/11 (64-bit). Penggunaan \textit{VM} dipilih untuk memastikan bahwa 
-pengujian berlangsung secara aman, tidak memengaruhi sistem utama, serta 
-memungkinkan proses \textit{rollback} melalui \textit{snapshot} apabila terjadi 
-kesalahan selama eksperimen. Modul berjalan pada level pengguna 
-(\textit{user-level access}) tanpa hak administratif, sehingga mencerminkan 
-kondisi bagaimana \textit{spyware} berbasis \textit{stealth} beroperasi. Selain 
-itu, proses \textit{crawling} hanya dilakukan apabila kondisi lingkungan dinilai 
-aman untuk menjaga karakteristik \textit{stealth} dari modul yang dirancang.
 
 \subsubsection{Alur Kerja Modul \textit{Mission}}
 \label{subsubsec:alur-kerja-mission}
@@ -148,7 +137,7 @@ modul ini.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{image/flowchart-mission.png}
+    \includegraphics[width=0.4\textwidth]{image/flowchart-mission.png}
     \caption{\textit{Flowchart} Alur Kerja Modul \textit{Mission}}
     \label{fig:flowchart-mission}
 \end{figure}
@@ -164,12 +153,9 @@ lingkungan dianggap tidak aman, misi tidak dilanjutkan dan dijadwalkan ulang pad
 berikutnya.
 
 Apabila kondisi aman, modul \textit{Mission} menginisialisasi daftar artefak target yang 
-akan diproses, seperti metadata proses aktif atau \textit{buffer keylogging} yang perlu 
-dipindai. Modul kemudian memilih target berikutnya dari daftar, dan memeriksa apakah masih 
+akan diproses. Modul kemudian memilih target berikutnya dari daftar, dan memeriksa apakah masih 
 terdapat artefak yang harus dikumpulkan. Jika tidak ada target tersisa, \textit{batch crawling} 
-dianggap selesai dan proses dapat berlanjut ke tahap berikutnya.
-
-Untuk setiap target yang tersedia, modul mengambil data melalui \textit{crawling engine}. 
+dianggap selesai dan proses dapat berlanjut ke tahap berikutnya. Untuk setiap target yang tersedia, modul mengambil data melalui \textit{crawling engine}. 
 Proses ini mencakup pembacaan metadata sistem maupun pengambilan \textit{buffer} hasil 
 penekanan tombol. Data mentah yang diperoleh kemudian dinormalisasi, difilter, dan disesuaikan 
 dengan format penyimpanan sementara agar tetap efisien dan konsisten. Setelah diproses, data 
@@ -202,7 +188,7 @@ Rancangan modul \textit{Exfiltration} disusun untuk mendefinisikan bagaimana dat
 tetap mempertahankan karakteristik \textit{stealth}. Modul ini berfungsi mengelola 
 penjadwalan pengiriman, menyiapkan \textit{payload} yang telah terstruktur, serta 
 memastikan proses transmisi berlangsung tanpa memicu deteksi dari sistem keamanan. 
-Mekanisme di dalamnya mencakup proses \textit{packaging, encoding, compression,} pemilihan 
+Mekanisme di dalamnya mencakup proses \textit{packaging, encoding, compression,} enkripsi, pemilihan 
 waktu dan metode pengiriman, serta kontrol lingkungan sebelum data dikirim. Bagian ini membahas 
 arsitektur modul eksfiltrasi, jenis \textit{output} yang dihasilkan, serta alur mekanisme 
 pengiriman data dari \textit{buffer} hingga diterima oleh \textit{endpoint} analitik.
@@ -241,7 +227,7 @@ Secara garis besar, arsitektur modul \textit{Exfiltration} terdiri dari beberapa
     
     \textit{Data packaging \& encoding} bertugas mengubah data mentah dalam \textit{buffer} 
     menjadi payload yang siap dikirim. Pada tahap ini dilakukan proses normalisasi, 
-    penggabungan, kompresi, serta encoding data. Tujuannya adalah mengurangi ukuran \textit{payload}, 
+    penggabungan, kompresi, \textit{lightweight encryption}, serta \textit{encoding data}. Tujuannya adalah mengurangi ukuran \textit{payload}, 
     menyamakan format antar \textit{batch}, dan mempermudah proses pengiriman melalui protokol 
     jaringan yang digunakan. Dengan demikian, data yang dikirim ke \textit{endpoint} bersifat 
     ringkas, konsisten, dan tidak mudah dikenali sebagai \textit{traffic} yang tidak biasa.
@@ -284,21 +270,32 @@ Secara garis besar, arsitektur modul \textit{Exfiltration} terdiri dari beberapa
 
 \end{enumerate}
 
+Pada modul \textit{Exfiltration}, setiap komponen dirancang untuk mendukung proses 
+pengiriman data secara tersembunyi (\textit{stealth}), selaras dengan pendekatan 
+\textit{fileless} dan \textit{low profile traffic} yang digunakan dalam arsitektur 
+spyware. Agar setiap fungsi dapat berjalan secara efisien dan tetap sulit 
+terdeteksi oleh mekanisme \textit{anti-spyware}, pemilihan teknologi harus 
+disesuaikan dengan karakteristik dan kebutuhan masing-masing komponen. 
+Tabel~\ref{tbl:teknologi-modul-exfiltration} merangkum teknologi yang digunakan dalam 
+implementasi seluruh komponen pada modul \textit{Exfiltration}.
+
+\input{table/tabel4-3.tex}
+
 \subsubsection{Target Output \textit{Exfiltration}}
 \label{subsubsec:target-output-exfiltration}
 
 \textit{Output} eksfiltrasi merupakan data akhir yang telah dikumpulkan oleh modul 
 \textit{Mission} dan diproses sebelum dikirimkan ke \textit{endpoint} tujuan. Secara umum, 
 output yang dieksfiltrasi terdiri dari tiga kategori utama yang disajikan pada 
-Tabel~\ref{tbl:target-output-exfiltration}.
+Tabel~\ref{tbl:target-eksfiltrasi}.
 
-\input{table/tabel4-3.tex}
+\input{table/tabel4-4.tex}
 
 Sebelum dikirimkan, seluruh data dikemas dalam struktur \textit{payload} yang sudah
 dikompresi dan di-\textit{encode}. \textit{Payload} dapat berupa JSON terstruktur sebelum
 diberikan proses kompresi. Struktur \textit{payload} dipaparkan pada Tabel~\ref{tbl:struktur-payload}.
 
-\input{table/tabel4-4.tex}
+\input{table/tabel4-5.tex}
 
 \subsubsection{Mekanisme Pengiriman Data}
 \label{subsubsec:mekanisme-pengiriman-data}
@@ -363,19 +360,18 @@ dikonfigurasi secara terisolasi sehingga aktivitas \textit{crawling}
 dan eksfiltrasi tidak berdampak pada sistem di luar area pengujian. 
 Lingkungan uji yang digunakan disajikan pada Tabel~\ref{tbl:konfigurasi-pengujian}.
 
-\input{table/tabel4-5.tex}
+\input{table/tabel4-6.tex}
 
 Lingkungan pengujian pada penelitian ini dibangun menggunakan sistem operasi Windows 
-10/11 yang dikonfigurasi secara terisolasi untuk memastikan bahwa proses \textit{crawling} 
-dan \textit{eksfiltrasi} tidak berdampak pada sistem di luar area eksperimen. Seluruh modul 
-dijalankan menggunakan Python 3.x dan PowerShell sebagai bahasa pemrograman utama, dengan 
-dukungan beberapa \textit{library} seperti \textit{psutil}, \textit{pathlib}, \textit{requests}, 
-dan Win32API untuk mengakses artefak sistem serta mengelola proses \textit{crawling}. 
-Proses \textit{exfiltration} diarahkan menuju sebuah \textit{endpoint} lokal berbasis 
-\textit{REST API} (FastAPI) yang berfungsi sebagai server penerima \textit{payload} 
-hasil \textit{crawling}. Konfigurasi ini memastikan bahwa seluruh aktivitas uji dapat 
-dilakukan secara aman, terkontrol, dan sesuai dengan prinsip penelitian 
-\textit{spyware mode stealth}.
+11 yang dikonfigurasi secara terisolasi untuk memastikan bahwa proses \textit{crawling} 
+dan \textit{eksfiltrasi} tidak berdampak pada sistem di luar area eksperimen. Dari sisi 
+perangkat, mesin uji menggunakan spesifikasi Intel Core i5 Gen 8, RAM 8 GB, SSD 1 TB. 
+Pengujian melibatkan dua jenis jaringan, yaitu jaringan publik (ITB) dan jaringan lokal. 
+Untuk \textit{endpoint} \textit{eksfiltrasi}, digunakan \textit{REST API} berbasis \textit{FastAPI} 
+yang berfungsi sebagai \textit{server} penerima data dan menjadi target proses pengiriman \textit{payload}. 
+Solusi keamanan komersial di antaranya adalah Windows Defender, AVG, Avast, dan McAfee. 
+Keempat antivirus ini berperan sebagai \textit{baseline} deteksi yang umum ditemukan pada 
+sistem \textit{end user}.
 
 \section{Hasil Desain}
 \label{sec:hasil-desain}
@@ -395,8 +391,9 @@ sepanjang alur eksekusi.
     \label{fig:hasil-desain}
 \end{figure}
 
-Pada desain ini, sistem memulai proses dengan tiga kelompok data utama, yaitu 
-\textit{keylogging data}, \textit{system metadata}, dan \textit{system artifacts}. 
+Pada desain ini, \textit{data crawling} dan eksfiltrasi akan dilakukan dalam bentuk \textit{batch}. 
+Sistem memulai proses dengan empat kelompok data utama, yaitu 
+\textit{keylogging data}, \textit{system metadata}, \textit{system artifacts}, \textit{internet cache browsing}. 
 Ketiganya diakses oleh \textit{Mission Crawling Engine} secara terjadwal melalui 
 mekanisme \textit{request based crawling}. \textit{Engine} kemudian menghasilkan 
 \textit{raw data} yang disimpan di \textit{In Memory Buffer}, yaitu ruang penyimpanan 
@@ -411,3 +408,9 @@ batasan \textit{stealth} seperti pengacakan waktu pengiriman, pemilihan metode t
 yang rendah anomali, serta mekanisme \textit{retry} bila konfirmasi tidak diterima. Data 
 yang berhasil dieksfiltrasi akan tersimpan dalam \textit{Endpoint}, dan selanjutnya 
 menjadi input bagi \textit{Big Data Analytic} untuk proses analisis lebih lanjut.
+Data yang berhasil dieksfiltrasi akan disimpan pada \textit{Exfiltration Endpoint}. 
+Jika masih terdapat artefak yang belum diproses atau \textit{buffer} belum memenuhi kriteria 
+pengiriman, sistem akan melanjutkan eksekusi ke \textit{batch} berikutnya hingga seluruh 
+target \textit{crawling} terselesaikan. Setelah seluruh \textit{batch} berhasil dieksfiltrasi, 
+data yang tersimpan pada \textit{endpoint} menjadi input bagi \textit{Big Data Analytic} untuk 
+diproses lebih lanjut.

@@ -35,38 +35,20 @@ dipaketkan menuju infrastruktur penyerang melalui kanal komunikasi tertentu.
 Setelah itu data mencapai \textit{exfiltration endpoint}.
 
 \subsection{Tantangan \textit{Data Crawling} dan Eksfiltrasi \textit{Spyware}}
-Pada bagian ini dibahas berbagai hambatan yang muncul ketika \textit{spyware} berusaha menjalankan kedua proses tersebut tanpa terdeteksi oleh sistem keamanan. 
+Dalam melakukan \textit{data crawling} dan eksfiltrasi, ada beberapa tantangan yang dihadapi oleh \textit{spyware}:
 
 \begin{enumerate}
-    \item Aktivitas \textit{crawling} yang \textit{high noise} dan mudah terpantau 
-    
-    Proses \textit{crawling} sering melibatkan akses file, direktori, dan API secara intensif 
-    dan berulang. Aktivitas ini menghasilkan pola I/O yang mencolok dan dapat terdeteksi 
-    sebagai anomali oleh sistem keamanan. Ketika tidak ada mekanisme untuk mengurangi jejak 
-    atau menyesuaikan frekuensi akses, pola \textit{crawling} menjadi mudah dibedakan dari 
-    perilaku aplikasi normal.
+    \item Aktivitas \textit{crawling} yang \textit{high noise} dan mudah terpantau \\
+    Aktivitas \textit{crawling} yang berjalan secara intensif tanpa pengendalian frekuensi dapat menghasilkan pola akses file, direktori, dan API yang berulang sehingga memunculkan \textit{high-noise behavior} yang mudah terdeteksi oleh sistem keamanan berbasis perilaku. Menurut studi deteksi \textit{malware} berbasis \textit{system call} dan \textit{file I/O}, frekuensi akses file serta urutan \textit{system call} yang tidak lazim merupakan indikator kuat proses berbahaya, sehingga pola \textit{crawling} yang padat berpotensi terbaca sebagai anomali meskipun tidak bersifat \textit{malicious} \autocite{chukwuani2025mltechniques}.
 
-    \item Eksfiltrasi melalui kanal standar yang mudah dipantau
-     
-    Pengiriman data sering dilakukan melalui protokol umum seperti HTTP/HTTPS, email, FTP, 
-    atau DNS sederhana. Meskipun protokol tersebut merupakan bagian dari trafik normal 
-    dalam suatu jaringan, pola eksfiltrasi yang tidak disamarkan atau tidak menyerupai 
-    komunikasi aplikasi sah tetap dapat terdeteksi oleh \textit{anti-spyware}, terutama 
-    ketika frekuensi, ukuran, atau struktur paketnya berbeda dari penggunaan wajar.
+    \item Risiko deteksi dari pola akses yang intensif \\
+    \textit{Crawling} yang melibatkan pembacaan file, pemindaian direktori, atau interaksi API dalam frekuensi tinggi dapat menimbulkan pola aktivitas yang berbeda dari aplikasi normal. Temuan pada penelitian \textcite{sheen2022rsentry} menunjukkan bahwa sistem deteksi berbasis perilaku memanfaatkan penyimpangan pola akses file tersebut, misalnya dengan mengidentifikasi lonjakan jumlah \textit{file accesses} dalam interval waktu tertentu atau mendeteksi urutan \textit{directory traversal} yang tidak lazim.
 
-    \item Pola eksfiltrasi yang kasar atau \textit{bulk transfer}. 
-    
-    Data kerap dikirim dalam jumlah besar sekaligus atau pada interval waktu tetap. 
-    Pola pengiriman yang seragam dan tidak dinamis seperti ini mudah dikenali sebagai 
-    perilaku mencurigakan, karena berbeda dari arus komunikasi normal yang biasanya 
-    lebih bervariasi.
+    \item Eksfiltrasi melalui kanal standar yang mudah dipantau \\
+    Pengiriman data oleh malware maupun \textit{spyware} sering memanfaatkan protokol umum karena protokol tersebut biasanya diizinkan dan menjadi bagian dari trafik normal jaringan. Namun, penelitian \textcite{ullah2018dataexfiltration} menunjukkan bahwa meskipun kanal-kanal ini bersifat sah, pola eksfiltrasi yang tidak disamarkan tetap dapat terdeteksi ketika karakteristik komunikasinya tidak menyerupai perilaku aplikasi \textit{benign}. Mekanisme seperti \textit{known-channel inspection} dan \textit{anomaly-based detection} dapat mengidentifikasi eksfiltrasi melalui pemeriksaan konteks trafik, termasuk frekuensi, ukuran, konten, dan format paket, serta membandingkannya dengan pola penggunaan wajar.
 
-    \item Risiko deteksi dari pola akses yang intensif. 
-    
-    \textit{Crawling} yang melibatkan pembacaan \textit{file}, pemindaian direktori, atau 
-    interaksi API dalam frekuensi tinggi dapat menimbulkan pola aktivitas yang berbeda 
-    dari aplikasi normal. Sistem keamanan berbasis perilaku dapat mengenali anomali ini 
-    sebagai indikasi aktivitas tidak sah.
+    \item Pola eksfiltrasi yang kasar atau bulk transfer \\
+    Pola eksfiltrasi yang mengirimkan data dalam jumlah besar sekaligus atau menggunakan interval pengiriman yang tetap cenderung menghasilkan jejak komunikasi yang seragam dan tidak dinamis. Menurut \textcite{sabir2021mldetect}, sistem deteksi berbasis \textit{machine learning} dapat mengidentifikasi anomali dengan mempelajari pola komunikasi normal, termasuk variasi ukuran \textit{payload}, frekuensi pengiriman, dan distribusi data dalam trafik sehari-hari. Studi tersebut menjelaskan bahwa deviasi seperti pengiriman file berukuran besar secara tiba-tiba atau pola transfer yang konsisten dan berulang akan langsung dibedakan dari perilaku \textit{benign}, karena komunikasi normal umumnya menunjukkan variasi ukuran, timing, dan volume.
 \end{enumerate}
 
 \subsection{\textit{Gap Analysis}}
@@ -111,7 +93,7 @@ penelitian berjalan dengan aman, terkendali, dan sesuai prinsip etika akademik.
 \section{Analisis Pemilihan Solusi }
 \subsection{Alternatif Solusi}
 
-Permasalahan yang ditemukan dalam penelitian ini perlu dianalisis secara menyeluruh agar arah penyusunan solusi menjadi lebih terarah dan relevan dengan tujuan penelitian. Hasil identifikasi terhadap berbagai kendala yang muncul selama tahap studi literatur dan observasi awal kemudian dirangkum dalam Tabel~\ref{tbl:permasalahan-utama}. Tabel tersebut memuat daftar masalah utama beserta dampaknya terhadap proses \textit{data crawling} dan eksfiltrasi dalam rangka menguji kapabilitas deteksi \textit{anti-spyware} yang ada saat ini.
+Permasalahan yang ditemukan dalam penelitian ini perlu dianalisis secara menyeluruh agar arah penyusunan solusi menjadi lebih terarah dan relevan dengan tujuan penelitian. Hasil identifikasi terhadap berbagai kendala yang muncul selama tahap studi literatur dan observasi awal kemudian dirangkum dalam Tabel~\ref{tbl:masalah-dampak}. Tabel tersebut memuat daftar masalah utama beserta dampaknya terhadap proses \textit{data crawling} dan eksfiltrasi dalam rangka menguji kapabilitas deteksi \textit{anti-spyware} yang ada saat ini.
 
 \input{table/tabel3-4}
 

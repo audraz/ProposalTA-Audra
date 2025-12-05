@@ -1,20 +1,29 @@
-\begin{table}[H]
-\captionsetup{justification=raggedright,singlelinecheck=false}
-\centering
-\caption{\textit{Gap Analysis}}
-\label{tbl:gap-analysis}
-\begin{tabular}{|p{2.7cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\begin{longtable}{|p{2cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\caption{\textit{Gap Analysis}}%
+\label{tbl:gap-analysis} \\
 \hline
 \textbf{Domain Masalah} &
-\textbf{Kondisi Saat Ini (\textit{As-Is})} &
-\textbf{Kesenjangan (\textit{Gap})} &
-\textbf{Kondisi Ideal (\textit{To-Be})} \\
+\textbf{Kondisi Sebelum (As-Is)} &
+\textbf{Kesenjangan (Gap)} &
+\textbf{Kondisi Ideal (To-Be)} \\
 \hline
+\endfirsthead
+
+\hline
+\textbf{Domain Masalah} &
+\textbf{Kondisi Sebelum (As-Is)} &
+\textbf{Kesenjangan (Gap)} &
+\textbf{Kondisi Ideal (To-Be)} \\
+\hline
+\endhead
+
+\hline
+\endfoot
 
 Aktivitas \textit{crawling} &
-Proses \textit{crawling} dijalankan dari \textit{executable} di disk dan menggunakan akses file/direktori untuk mengambil data, sehingga meninggalkan artefak. &
+Malware file based meninggalkan file system artefacts, pola file I/O, dan traversal direktori yang abnormal. &
 Belum ada mekanisme untuk meminimalkan jejak \textit{crawling}. &
-\textit{Crawling} dilakukan dengan jejak minimal melalui \textit{in-memory processing}, penghapusan \textit{buffer} otomatis per \textit{batch}, dan tanpa meninggalkan artefak yang mudah terdeteksi di disk. \\
+\textit{Crawling} dilakukan dengan jejak minimal melalui \textit{in-memory processing}, penghapusan \textit{buffer} per \textit{batch}, dan tanpa meninggalkan artefak yang mudah terdeteksi di disk. \\
 \hline
 
 Kanal eksfiltrasi dan karakteristik trafik &
@@ -23,11 +32,10 @@ Kanal komunikasi belum menyerupai trafik normal dan karakteristik paket belum te
 Eksfiltrasi berlangsung melalui kanal yang menyerupai trafik sah dengan pola komunikasi adaptif, terenkripsi, dan tidak mencolok. \\
 \hline
 
-Mekanisme eksfiltrasi &
-Data hasil \textit{crawling} langsung dikirim ke \textit{endpoint} tanpa enkripsi atau kompresi khusus, sehingga struktur \textit{payload} masih mudah diinterpretasi. &
-Tidak ada mekanisme untuk mengamankan \textit{payload} eksfiltrasi. &
-Eksfiltrasi dilakukan dengan \textit{payload} terenkripsi, dikemas, atau disamarkan sehingga tidak mudah dibaca maupun dianalisis. \\
+Kemampuan terdeteksi &
+Aktivitas crawling dan eksfiltrasi masih terdeteksi karena pola waktu, ukuran paket, dan payload yang tidak disamarkan serta sering memunculkan anomali pada trafik jaringan. &
+Belum ada mekanisme yang meminimalkan indikator perilaku sehingga aktivitas tetap muncul sebagai pola mencurigakan bagi sistem deteksi. &
+Aktivitas berjalan dengan pola yang adaptif dan tidak mencolok sehingga jejak deteksi menjadi minimal. \\
 \hline
 
-\end{tabular}
-\end{table}
+\end{longtable}

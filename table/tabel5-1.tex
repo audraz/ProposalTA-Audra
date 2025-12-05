@@ -1,9 +1,18 @@
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{3.5cm}|p{8cm}|p{3cm}|}
+\begin{longtable}{|p{3.5cm}|p{6cm}|p{3cm}|}
+\caption{Rencana Implementasi Modul \textit{Mission}}
+\label{tbl:rencana-mission} \\
 \hline
-\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\ 
+\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\
 \hline
+\endfirsthead
+
+\hline
+\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\
+\hline
+\endhead
+
+\hline
+\endfoot
 
 Penentuan target data \textit{crawling} &
 Mengidentifikasi jenis data yang akan diambil, yaitu hasil \textit{keylogging}, metadata proses sistem, artefak sistem tambahan, dan aktivitas \textit{cache} internet \textit{browser}. &
@@ -40,8 +49,4 @@ Menguji apakah \textit{crawling} berjalan stabil, tidak memicu \textit{alert} aw
 Host Windows 10/11 \\
 \hline
 
-\end{tabular}
-\captionsetup{justification=raggedright, singlelinecheck=false}
-\caption{Rencana Implementasi Modul \textit{Mission}}
-\label{tbl:rencana-mission}
-\end{table}
+\end{longtable}

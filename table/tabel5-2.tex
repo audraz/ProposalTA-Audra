@@ -1,35 +1,47 @@
-\begin{table}[H]
-\centering
+\begin{longtable}{|p{3.5cm}|p{6cm}|p{3cm}|}
 \captionsetup{justification=raggedright, singlelinecheck=false}
-\begin{tabular}{|p{3.2cm}|p{8cm}|p{3cm}|}
+\caption{Rencana Implementasi Modul \textit{Exfiltration}} \label{tbl:rencana-exfiltration} \\
 \hline
-\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\ \hline
+\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Langkah} & \textbf{Penjelasan} & \textbf{Tools} \\
+\hline
+\endhead
+
+\hline
+\endfoot
 
 Menentukan server penerima &
 Menyusun layanan sederhana pada sisi penerima untuk menerima data hasil eksfiltrasi dari host Windows. &
-Python \textit{FastAPI} \\ \hline
+Python \textit{FastAPI} \\
+\hline
 
 Mempersiapkan struktur data yang akan dikirim &
 Data hasil \textit{crawling} yang sudah disimpan sementara dalam \textit{buffer in memory} dikemas menjadi format JSON agar mudah dikirim dan tidak menimbulkan \textit{burst traffic} mencolok. &
-\textit{Modul} formatting JSON \\ \hline
+\textit{Modul} formatting JSON \\
+\hline
 
 Pengaturan interval pengiriman acak (\textit{low and slow}) &
 Setiap \textit{payload} dikirim dalam interval waktu acak dan tidak beraturan sehingga pola komunikasi tidak menunjukkan ritme repetitif yang dapat memicu deteksi anomali. &
-Timer/Scheduler \\ \hline
+Timer/Scheduler \\
+\hline
 
 Mengirimkan data melalui kanal komunikasi umum (HTTP/S) &
 Eksfiltrasi dilakukan menggunakan \textit{request} HTTP/HTTPS lokal sehingga pola komunikasinya menyerupai aplikasi biasa. &
-PowerShell \\ \hline
+PowerShell \\
+\hline
 
 Pembersihan \textit{buffer} setelah pengiriman &
 Setelah setiap potongan data dikirim, \textit{buffer} dihapus dari memori untuk meningkatkan \textit{stealth} dan mengurangi jejak aktivitas pada sistem. &
-Memory buffer module \\ \hline
+Memory buffer module \\
+\hline
 
 Verifikasi pengiriman data &
 Memastikan setiap data berhasil diterima oleh server lokal tanpa \textit{error}. &
-Log server \\ \hline
+Log server \\
+\hline
 
-\end{tabular}
-\caption{Rencana Implementasi Modul \textit{Exfiltration}}
-\label{tbl:rencana-exfiltration}
-\end{table}
+\end{longtable}

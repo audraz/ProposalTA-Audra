@@ -1,21 +1,28 @@
 \begin{table}[H]
-    \centering
-    \captionsetup{justification=raggedright,singlelinecheck=false}
-    \begin{tabular}{ | p{4cm} | p{10cm} | }
-        \hline
-        \textbf{\textit{Field}} & \textbf{Isi/Struktur} \\
-        \hline
-        keylogs & List objek \textit{keylogging} \\ 
-        \hline
-        metadata & List metadata proses \\ 
-        \hline
-        system\_artifacts & Data artefak sistem \\ 
-        \hline
-        session\_id & ID unik \textit{batch crawling} \\ 
-        \hline
-        generated\_at & \textit{Timestamp} waktu payload dibuat \\ 
-        \hline
-    \end{tabular}
-    \caption{Struktur \textit{Payload}}
-    \label{tbl:struktur-payload}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption{Target \textit{Output Exfiltration}}
+\label{tbl:target-eksfiltrasi}
+
+\raggedright
+\begin{tabular}{|p{5cm}|p{7.9cm}|}
+\hline
+\textbf{Kategori Data} & \textbf{Deskripsi} \\
+\hline
+
+Hasil \textit{Keylogging} &
+Rekaman aktivitas penekanan tombol secara kronologis. \\
+\hline
+
+Metadata Proses Sistem &
+Informasi konteks eksekusi proses pada saat aktivitas terjadi. \\
+\hline
+
+Artefak Sistem Tambahan &
+Artefak yang menggambarkan kondisi sistem saat \textit{crawling}. \\
+\hline
+
+Aktivitas \textit{cache internet browsing} &
+Riwayat dan jejak akses halaman web yang tersimpan oleh browser. \\
+\hline
+\end{tabular}
 \end{table}

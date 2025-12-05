@@ -1,13 +1,18 @@
-\begin{table}[H]
-\captionsetup{justification=raggedright,singlelinecheck=false}
-\centering
+\begin{longtable}{|p{1.5cm}|p{5cm}|p{7cm}|}
 \caption{Kebutuhan Fungsional}
-\label{tbl:kebutuhan-fungsional}
-
-\begin{tabular}{|p{1.5cm}|p{5cm}|p{7cm}|}
+\label{tbl:kebutuhan-fungsional} \\
 \hline
 \textbf{ID} & \textbf{Kebutuhan} & \textbf{Penjelasan} \\
 \hline
+\endfirsthead
+
+\hline
+\textbf{ID} & \textbf{Kebutuhan} & \textbf{Penjelasan} \\
+\hline
+\endhead
+
+\hline
+\endfoot
 
 FR-01 &
 Sistem dapat melakukan proses \textit{crawling} data secara \textit{stealth} &
@@ -18,7 +23,7 @@ sehingga sulit terdeteksi \textit{anti-malware}. \\
 
 FR-02 &
 Sistem mendukung eksfiltrasi data menggunakan metode yang sulit dianalisis &
-Eksfiltrasi dilakukan melalui kanal terenkripsi (misal HTTPS, DNS \textit{tunneling}), 
+Eksfiltrasi dilakukan melalui kanal terenkripsi, 
 data dicicil secara acak, serta menyamarkan trafik sehingga tidak mudah dibedakan dari aktivitas jaringan normal oleh deteksi keamanan. \\
 \hline
 
@@ -40,5 +45,4 @@ Setelah aktivitas \textit{crawling} dan eksfiltrasi selesai, sistem menghapus ar
 sehingga \textit{anti-malware} maupun forensik tidak menemukan indikasi aktivitas berbahaya. \\
 \hline
 
-\end{tabular}
-\end{table}
+\end{longtable}
